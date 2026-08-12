@@ -1,0 +1,5232 @@
+{
+  "tables": [
+    {
+      "table_name": "summaries_2023",
+      "table_type": "CLONE",
+      "size_bytes": 90489074731,
+      "created": "2025-10-20 05:24:24.284000+00:00"
+    },
+    {
+      "table_name": "summaries_2024",
+      "table_type": "BASE TABLE",
+      "size_bytes": 110766250786,
+      "created": "2024-12-03 21:57:44.389000+00:00"
+    },
+    {
+      "table_name": "summaries_2025",
+      "table_type": "CLONE",
+      "size_bytes": 130921147029,
+      "created": "2025-10-19 21:30:34.655000+00:00"
+    }
+  ],
+  "schema_summaries_2024": [
+    {
+      "path": "orcid_identifier",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "All ORCID iDs expressed in a record use the same elements: uri, which is the full URI to the record; path, which is the 16-digit ORCID identifier; and host, which is the domain the record is on."
+    },
+    {
+      "path": "orcid_identifier.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "orcid_identifier.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "orcid_identifier.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "preferences",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The preferences section records the language the user selected when viewing their ORCID record. The languages are listed in https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes, with the exception of"
+    },
+    {
+      "path": "preferences.locale",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "history",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The history section has information about the creation and current status of the record:"
+    },
+    {
+      "path": "history.creation_method",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "How the record was created."
+    },
+    {
+      "path": "history.completion_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "history.submission_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date the record was created by the user if the creation method is Direct, Website, or Member-referred, or if the creation method is API; it is the date the researcher claimed the record"
+    },
+    {
+      "path": "history.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "All items on the ORCID record include metadata about when they were created and when they were modified. These dates are hierarchical; the create date for the section is set to when an item was first "
+    },
+    {
+      "path": "history.deactivation_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "history.source",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "Fields which can be edited by either the API or the user include the ORCID iD and the name of the client which added the information."
+    },
+    {
+      "path": "history.source.source_orcid",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The ORCID identifier for the individual user (or legacy client application) that created the item. For identifiers of individual users, it may be used to look up ORCID record details via the API."
+    },
+    {
+      "path": "history.source.source_orcid.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "history.source.source_orcid.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "history.source.source_orcid.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "history.source.source_client_id",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The client ID for the client application (Member organization system) that created the item."
+    },
+    {
+      "path": "history.source.source_client_id.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "history.source.source_client_id.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "history.source.source_client_id.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "history.source.source_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The human-readable name of the client application (Member organization system) or individual user that created the item. Value for the same person/organization could change over time. source-orcid or "
+    },
+    {
+      "path": "history.source.assertion_origin_orcid",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The ORCID identifier for the individual user (or legacy client application) made the assertion. If missing, source is the same as assertion origin."
+    },
+    {
+      "path": "history.source.assertion_origin_orcid.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "history.source.assertion_origin_orcid.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "history.source.assertion_origin_orcid.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "history.source.assertion_origin_client_id",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The client ID for the client application (Member organization system) that made the assertion. If missing, source is the same as assertion origin."
+    },
+    {
+      "path": "history.source.assertion_origin_client_id.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "history.source.assertion_origin_client_id.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "history.source.assertion_origin_client_id.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "history.source.assertion_origin_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The human-readable name of the client application (Member organization system) or individual user that created the item. Value for the same person/organization could change over time. source-orcid or "
+    },
+    {
+      "path": "history.claimed",
+      "type": "BOOLEAN",
+      "mode": "NULLABLE",
+      "description": "Shows that the record has been claimed by the researcher. All records created by the researcher will have this field set to true. A small number of records that were created by an institution for a re"
+    },
+    {
+      "path": "history.verified_email",
+      "type": "BOOLEAN",
+      "mode": "NULLABLE",
+      "description": "If any email address on the record has been verified, this will be set to true / (to verify an email address the user must prove they have access to that email address inbox by following a / link sent"
+    },
+    {
+      "path": "history.verified_primary_email",
+      "type": "BOOLEAN",
+      "mode": "NULLABLE",
+      "description": "If the primary email address on the record has been verified"
+    },
+    {
+      "path": "person",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "Person Details"
+    },
+    {
+      "path": "person.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "person.name",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The given-names, family-name and credit-name are the names the researchergoes by, and can only be edited by the researcher (which is why no source information is returned in this section). While given"
+    },
+    {
+      "path": "person.name.given_names",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The given-names, family-name and credit-name are the names the researcher goes by, and can only be edited by the researcher (which is why no source information is returned in this section). While give"
+    },
+    {
+      "path": "person.name.family_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The given-names, family-name and credit-name are the names the researcher goes by, and can only be edited by the researcher (which is why no source information is returned in this section). While give"
+    },
+    {
+      "path": "person.name.credit_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The given-names, family-name and credit-name are the names the researcher goes by, and can only be edited by the researcher (which is why no source information is returned in this section). While give"
+    },
+    {
+      "path": "person.name.visibility",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Visibility indicates the privacy setting of the item, based on the user’s set visibility preference. If a visibility tag is included when information is posted via the API, it will be ignored. Instead"
+    },
+    {
+      "path": "person.name.source",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "person.name.source.source_orcid",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The ORCID identifier for the individual user (or legacy client application) that created the item. For identifiers of individual users, it may be used to look up ORCID record details via the API."
+    },
+    {
+      "path": "person.name.source.source_orcid.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "person.name.source.source_orcid.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "person.name.source.source_orcid.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "person.name.source.source_client_id",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The client ID for the client application (Member organization system) that created the item."
+    },
+    {
+      "path": "person.name.source.source_client_id.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "person.name.source.source_client_id.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "person.name.source.source_client_id.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "person.name.source.source_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The human-readable name of the client application (Member organization system) or individual user that created the item. Value for the same person/organization could change over time. source-orcid or "
+    },
+    {
+      "path": "person.name.source.assertion_origin_orcid",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The ORCID identifier for the individual user (or legacy client application) made the assertion. If missing, source is the same as assertion origin."
+    },
+    {
+      "path": "person.name.source.assertion_origin_orcid.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "person.name.source.assertion_origin_orcid.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "person.name.source.assertion_origin_orcid.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "person.name.source.assertion_origin_client_id",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The client ID for the client application (Member organization system) that made the assertion. If missing, source is the same as assertion origin."
+    },
+    {
+      "path": "person.name.source.assertion_origin_client_id.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "person.name.source.assertion_origin_client_id.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "person.name.source.assertion_origin_client_id.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "person.name.source.assertion_origin_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The human-readable name of the client application (Member organization system) or individual user that created the item. Value for the same person/organization could change over time. source-orcid or "
+    },
+    {
+      "path": "person.name.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "person.name.created_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when element was created."
+    },
+    {
+      "path": "person.other_names",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "Other names is a repeatable field to capture other names the researcher may be known by. In this example, the record has three other names, all of which were added by the researcher. As with all secti"
+    },
+    {
+      "path": "person.other_names.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "person.other_names.names",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": ""
+    },
+    {
+      "path": "person.other_names.names.content",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "person.other_names.names.source",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "person.other_names.names.source.source_orcid",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The ORCID identifier for the individual user (or legacy client application) that created the item. For identifiers of individual users, it may be used to look up ORCID record details via the API."
+    },
+    {
+      "path": "person.other_names.names.source.source_orcid.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "person.other_names.names.source.source_orcid.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "person.other_names.names.source.source_orcid.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "person.other_names.names.source.source_client_id",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The client ID for the client application (Member organization system) that created the item."
+    },
+    {
+      "path": "person.other_names.names.source.source_client_id.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "person.other_names.names.source.source_client_id.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "person.other_names.names.source.source_client_id.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "person.other_names.names.source.source_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The human-readable name of the client application (Member organization system) or individual user that created the item. Value for the same person/organization could change over time. source-orcid or "
+    },
+    {
+      "path": "person.other_names.names.source.assertion_origin_orcid",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The ORCID identifier for the individual user (or legacy client application) made the assertion. If missing, source is the same as assertion origin."
+    },
+    {
+      "path": "person.other_names.names.source.assertion_origin_orcid.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "person.other_names.names.source.assertion_origin_orcid.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "person.other_names.names.source.assertion_origin_orcid.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "person.other_names.names.source.assertion_origin_client_id",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The client ID for the client application (Member organization system) that made the assertion. If missing, source is the same as assertion origin."
+    },
+    {
+      "path": "person.other_names.names.source.assertion_origin_client_id.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "person.other_names.names.source.assertion_origin_client_id.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "person.other_names.names.source.assertion_origin_client_id.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "person.other_names.names.source.assertion_origin_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The human-readable name of the client application (Member organization system) or individual user that created the item. Value for the same person/organization could change over time. source-orcid or "
+    },
+    {
+      "path": "person.other_names.names.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "person.other_names.names.created_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when element was created."
+    },
+    {
+      "path": "person.other_names.names.visibility",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "person.other_names.names.display_index",
+      "type": "INTEGER",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "person.biography",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The biography field is non-repeatable and can only be edited by the researcher. Since only the researcher can edit this field, no source information is included"
+    },
+    {
+      "path": "person.biography.content",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "person.biography.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "person.biography.created_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when element was created."
+    },
+    {
+      "path": "person.biography.visibility",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "person.researcher_urls",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "Researcher URLs (labeled as websites on the record) link to other webpagesabout the researcher. Each webpage has a url tag, which is the link to the webpage itself, and an optional url-name tag. In th"
+    },
+    {
+      "path": "person.researcher_urls.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "person.researcher_urls.urls",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": ""
+    },
+    {
+      "path": "person.researcher_urls.urls.url_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "person.researcher_urls.urls.url",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "person.researcher_urls.urls.source",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "person.researcher_urls.urls.source.source_orcid",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The ORCID identifier for the individual user (or legacy client application) that created the item. For identifiers of individual users, it may be used to look up ORCID record details via the API."
+    },
+    {
+      "path": "person.researcher_urls.urls.source.source_orcid.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "person.researcher_urls.urls.source.source_orcid.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "person.researcher_urls.urls.source.source_orcid.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "person.researcher_urls.urls.source.source_client_id",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The client ID for the client application (Member organization system) that created the item."
+    },
+    {
+      "path": "person.researcher_urls.urls.source.source_client_id.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "person.researcher_urls.urls.source.source_client_id.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "person.researcher_urls.urls.source.source_client_id.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "person.researcher_urls.urls.source.source_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The human-readable name of the client application (Member organization system) or individual user that created the item. Value for the same person/organization could change over time. source-orcid or "
+    },
+    {
+      "path": "person.researcher_urls.urls.source.assertion_origin_orcid",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The ORCID identifier for the individual user (or legacy client application) made the assertion. If missing, source is the same as assertion origin."
+    },
+    {
+      "path": "person.researcher_urls.urls.source.assertion_origin_orcid.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "person.researcher_urls.urls.source.assertion_origin_orcid.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "person.researcher_urls.urls.source.assertion_origin_orcid.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "person.researcher_urls.urls.source.assertion_origin_client_id",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The client ID for the client application (Member organization system) that made the assertion. If missing, source is the same as assertion origin."
+    },
+    {
+      "path": "person.researcher_urls.urls.source.assertion_origin_client_id.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "person.researcher_urls.urls.source.assertion_origin_client_id.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "person.researcher_urls.urls.source.assertion_origin_client_id.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "person.researcher_urls.urls.source.assertion_origin_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The human-readable name of the client application (Member organization system) or individual user that created the item. Value for the same person/organization could change over time. source-orcid or "
+    },
+    {
+      "path": "person.researcher_urls.urls.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "person.researcher_urls.urls.created_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when element was created."
+    },
+    {
+      "path": "person.researcher_urls.urls.visibility",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "person.researcher_urls.urls.display_index",
+      "type": "INTEGER",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "person.emails",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "Email addresses can only be edited by the researcher. Keep in mind thatemail addresses default with the visibility setting ‘only me’ and most users do not change thatstatus, so often when reading a re"
+    },
+    {
+      "path": "person.emails.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "person.emails.emails",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": ""
+    },
+    {
+      "path": "person.emails.emails.email",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "person.emails.emails.source",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "person.emails.emails.source.source_orcid",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The ORCID identifier for the individual user (or legacy client application) that created the item. For identifiers of individual users, it may be used to look up ORCID record details via the API."
+    },
+    {
+      "path": "person.emails.emails.source.source_orcid.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "person.emails.emails.source.source_orcid.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "person.emails.emails.source.source_orcid.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "person.emails.emails.source.source_client_id",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The client ID for the client application (Member organization system) that created the item."
+    },
+    {
+      "path": "person.emails.emails.source.source_client_id.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "person.emails.emails.source.source_client_id.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "person.emails.emails.source.source_client_id.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "person.emails.emails.source.source_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The human-readable name of the client application (Member organization system) or individual user that created the item. Value for the same person/organization could change over time. source-orcid or "
+    },
+    {
+      "path": "person.emails.emails.source.assertion_origin_orcid",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The ORCID identifier for the individual user (or legacy client application) made the assertion. If missing, source is the same as assertion origin."
+    },
+    {
+      "path": "person.emails.emails.source.assertion_origin_orcid.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "person.emails.emails.source.assertion_origin_orcid.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "person.emails.emails.source.assertion_origin_orcid.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "person.emails.emails.source.assertion_origin_client_id",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The client ID for the client application (Member organization system) that made the assertion. If missing, source is the same as assertion origin."
+    },
+    {
+      "path": "person.emails.emails.source.assertion_origin_client_id.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "person.emails.emails.source.assertion_origin_client_id.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "person.emails.emails.source.assertion_origin_client_id.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "person.emails.emails.source.assertion_origin_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The human-readable name of the client application (Member organization system) or individual user that created the item. Value for the same person/organization could change over time. source-orcid or "
+    },
+    {
+      "path": "person.emails.emails.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "person.emails.emails.created_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when element was created."
+    },
+    {
+      "path": "person.emails.emails.verified",
+      "type": "BOOLEAN",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "person.emails.emails.primary",
+      "type": "BOOLEAN",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "person.emails.emails.visibility",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "person.emails.emails.display_index",
+      "type": "INTEGER",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "person.addresses",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The address field records countries or regions that the researcher worksor has worked in. The countries are returned in ISO 3166-1 alpha-2 format. In this example one country has been added by the use"
+    },
+    {
+      "path": "person.addresses.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "person.addresses.addresses",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": ""
+    },
+    {
+      "path": "person.addresses.addresses.country",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "person.addresses.addresses.source",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "person.addresses.addresses.source.source_orcid",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The ORCID identifier for the individual user (or legacy client application) that created the item. For identifiers of individual users, it may be used to look up ORCID record details via the API."
+    },
+    {
+      "path": "person.addresses.addresses.source.source_orcid.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "person.addresses.addresses.source.source_orcid.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "person.addresses.addresses.source.source_orcid.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "person.addresses.addresses.source.source_client_id",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The client ID for the client application (Member organization system) that created the item."
+    },
+    {
+      "path": "person.addresses.addresses.source.source_client_id.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "person.addresses.addresses.source.source_client_id.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "person.addresses.addresses.source.source_client_id.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "person.addresses.addresses.source.source_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The human-readable name of the client application (Member organization system) or individual user that created the item. Value for the same person/organization could change over time. source-orcid or "
+    },
+    {
+      "path": "person.addresses.addresses.source.assertion_origin_orcid",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The ORCID identifier for the individual user (or legacy client application) made the assertion. If missing, source is the same as assertion origin."
+    },
+    {
+      "path": "person.addresses.addresses.source.assertion_origin_orcid.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "person.addresses.addresses.source.assertion_origin_orcid.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "person.addresses.addresses.source.assertion_origin_orcid.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "person.addresses.addresses.source.assertion_origin_client_id",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The client ID for the client application (Member organization system) that made the assertion. If missing, source is the same as assertion origin."
+    },
+    {
+      "path": "person.addresses.addresses.source.assertion_origin_client_id.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "person.addresses.addresses.source.assertion_origin_client_id.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "person.addresses.addresses.source.assertion_origin_client_id.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "person.addresses.addresses.source.assertion_origin_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The human-readable name of the client application (Member organization system) or individual user that created the item. Value for the same person/organization could change over time. source-orcid or "
+    },
+    {
+      "path": "person.addresses.addresses.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "person.addresses.addresses.created_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when element was created."
+    },
+    {
+      "path": "person.addresses.addresses.verified",
+      "type": "BOOLEAN",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "person.addresses.addresses.primary",
+      "type": "BOOLEAN",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "person.addresses.addresses.visibility",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "person.addresses.addresses.display_index",
+      "type": "INTEGER",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "person.keywords",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The keywords sections is for words and phrases that describe the researcher’s areas of study.&nbsp;In this example, there are three keywords: two added by the researcher and one by a client integratio"
+    },
+    {
+      "path": "person.keywords.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "person.keywords.keywords",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": ""
+    },
+    {
+      "path": "person.keywords.keywords.content",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "person.keywords.keywords.source",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "person.keywords.keywords.source.source_orcid",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The ORCID identifier for the individual user (or legacy client application) that created the item. For identifiers of individual users, it may be used to look up ORCID record details via the API."
+    },
+    {
+      "path": "person.keywords.keywords.source.source_orcid.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "person.keywords.keywords.source.source_orcid.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "person.keywords.keywords.source.source_orcid.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "person.keywords.keywords.source.source_client_id",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The client ID for the client application (Member organization system) that created the item."
+    },
+    {
+      "path": "person.keywords.keywords.source.source_client_id.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "person.keywords.keywords.source.source_client_id.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "person.keywords.keywords.source.source_client_id.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "person.keywords.keywords.source.source_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The human-readable name of the client application (Member organization system) or individual user that created the item. Value for the same person/organization could change over time. source-orcid or "
+    },
+    {
+      "path": "person.keywords.keywords.source.assertion_origin_orcid",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The ORCID identifier for the individual user (or legacy client application) made the assertion. If missing, source is the same as assertion origin."
+    },
+    {
+      "path": "person.keywords.keywords.source.assertion_origin_orcid.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "person.keywords.keywords.source.assertion_origin_orcid.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "person.keywords.keywords.source.assertion_origin_orcid.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "person.keywords.keywords.source.assertion_origin_client_id",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The client ID for the client application (Member organization system) that made the assertion. If missing, source is the same as assertion origin."
+    },
+    {
+      "path": "person.keywords.keywords.source.assertion_origin_client_id.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "person.keywords.keywords.source.assertion_origin_client_id.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "person.keywords.keywords.source.assertion_origin_client_id.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "person.keywords.keywords.source.assertion_origin_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The human-readable name of the client application (Member organization system) or individual user that created the item. Value for the same person/organization could change over time. source-orcid or "
+    },
+    {
+      "path": "person.keywords.keywords.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "person.keywords.keywords.created_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when element was created."
+    },
+    {
+      "path": "person.keywords.keywords.verified",
+      "type": "BOOLEAN",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "person.keywords.keywords.primary",
+      "type": "BOOLEAN",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "person.keywords.keywords.visibility",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "person.keywords.keywords.display_index",
+      "type": "INTEGER",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "person.external_identifiers",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "Person external identifiers record identifiers and links to the researcher in other systems. Like all identifiers, the personal external identifier is described using the tags: type, value, url, and r"
+    },
+    {
+      "path": "person.external_identifiers.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "person.external_identifiers.identifiers",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": ""
+    },
+    {
+      "path": "person.external_identifiers.identifiers.type",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "person.external_identifiers.identifiers.value",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "person.external_identifiers.identifiers.relationship",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "person.external_identifiers.identifiers.url",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "person.external_identifiers.identifiers.source",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "person.external_identifiers.identifiers.source.source_orcid",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The ORCID identifier for the individual user (or legacy client application) that created the item. For identifiers of individual users, it may be used to look up ORCID record details via the API."
+    },
+    {
+      "path": "person.external_identifiers.identifiers.source.source_orcid.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "person.external_identifiers.identifiers.source.source_orcid.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "person.external_identifiers.identifiers.source.source_orcid.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "person.external_identifiers.identifiers.source.source_client_id",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The client ID for the client application (Member organization system) that created the item."
+    },
+    {
+      "path": "person.external_identifiers.identifiers.source.source_client_id.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "person.external_identifiers.identifiers.source.source_client_id.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "person.external_identifiers.identifiers.source.source_client_id.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "person.external_identifiers.identifiers.source.source_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The human-readable name of the client application (Member organization system) or individual user that created the item. Value for the same person/organization could change over time. source-orcid or "
+    },
+    {
+      "path": "person.external_identifiers.identifiers.source.assertion_origin_orcid",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The ORCID identifier for the individual user (or legacy client application) made the assertion. If missing, source is the same as assertion origin."
+    },
+    {
+      "path": "person.external_identifiers.identifiers.source.assertion_origin_orcid.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "person.external_identifiers.identifiers.source.assertion_origin_orcid.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "person.external_identifiers.identifiers.source.assertion_origin_orcid.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "person.external_identifiers.identifiers.source.assertion_origin_client_id",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The client ID for the client application (Member organization system) that made the assertion. If missing, source is the same as assertion origin."
+    },
+    {
+      "path": "person.external_identifiers.identifiers.source.assertion_origin_client_id.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "person.external_identifiers.identifiers.source.assertion_origin_client_id.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "person.external_identifiers.identifiers.source.assertion_origin_client_id.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "person.external_identifiers.identifiers.source.assertion_origin_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The human-readable name of the client application (Member organization system) or individual user that created the item. Value for the same person/organization could change over time. source-orcid or "
+    },
+    {
+      "path": "person.external_identifiers.identifiers.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "person.external_identifiers.identifiers.created_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when element was created."
+    },
+    {
+      "path": "person.external_identifiers.identifiers.visibility",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "person.external_identifiers.identifiers.display_index",
+      "type": "INTEGER",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The activities sections record information about the researcher’s work and outcomes, enabling them to get recognition for a wide range of contributions and affiliations. There are eleven subsections"
+    },
+    {
+      "path": "activities.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "activities.educations",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The Education section records the educational institution(s) where the researcher has studied. It uses the same fields as the Employment section: department-name and role-title for specific informatio"
+    },
+    {
+      "path": "activities.educations.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "activities.educations.groups",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": ""
+    },
+    {
+      "path": "activities.educations.groups.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "activities.educations.groups.external_ids",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.educations.groups.external_ids.identifiers",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": "Identifiers for items on the ORCID record are recorded using the common external-ids tag, this includes identifiers in the person, works, funding, and peer review sections. The identifier is described"
+    },
+    {
+      "path": "activities.educations.groups.external_ids.identifiers.type",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Supported external-id-type values can be found at https://pub.orcid.org/v2.0/identifiers"
+    },
+    {
+      "path": "activities.educations.groups.external_ids.identifiers.value",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.educations.groups.external_ids.identifiers.normalized",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.educations.groups.external_ids.identifiers.url",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.educations.groups.external_ids.identifiers.relationship",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.educations.groups.records",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": ""
+    },
+    {
+      "path": "activities.educations.groups.records.department_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The department or subdivision of the organization the affiliation is associated with"
+    },
+    {
+      "path": "activities.educations.groups.records.role_title",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The title given for the position, or the degree earned"
+    },
+    {
+      "path": "activities.educations.groups.records.start_date",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The date the affiliation began"
+    },
+    {
+      "path": "activities.educations.groups.records.start_date.year",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the year of the date."
+    },
+    {
+      "path": "activities.educations.groups.records.start_date.month",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the month of the date."
+    },
+    {
+      "path": "activities.educations.groups.records.start_date.day",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the day of the date."
+    },
+    {
+      "path": "activities.educations.groups.records.end_date",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The date the affiliation ended or will end"
+    },
+    {
+      "path": "activities.educations.groups.records.end_date.year",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the year of the date."
+    },
+    {
+      "path": "activities.educations.groups.records.end_date.month",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the month of the date."
+    },
+    {
+      "path": "activities.educations.groups.records.end_date.day",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the day of the date."
+    },
+    {
+      "path": "activities.educations.groups.records.organization",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "Information about the organization the affiliation was with. A ROR, or Crossref Funder Registry organization identifier is required in 3.0+"
+    },
+    {
+      "path": "activities.educations.groups.records.organization.name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.educations.groups.records.organization.address",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "Information about the physical location of the organization the affiliation is with. A city and country are required"
+    },
+    {
+      "path": "activities.educations.groups.records.organization.address.city",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.educations.groups.records.organization.address.region",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.educations.groups.records.organization.address.country",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.educations.groups.records.organization.disambiguated_organization",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.educations.groups.records.organization.disambiguated_organization.identifier",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.educations.groups.records.organization.disambiguated_organization.source",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.educations.groups.records.url",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "A URL to a resource about the affiliation"
+    },
+    {
+      "path": "activities.educations.groups.records.external_ids",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.educations.groups.records.external_ids.identifiers",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": "Identifiers for items on the ORCID record are recorded using the common external-ids tag, this includes identifiers in the person, works, funding, and peer review sections. The identifier is described"
+    },
+    {
+      "path": "activities.educations.groups.records.external_ids.identifiers.type",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Supported external-id-type values can be found at https://pub.orcid.org/v2.0/identifiers"
+    },
+    {
+      "path": "activities.educations.groups.records.external_ids.identifiers.value",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.educations.groups.records.external_ids.identifiers.normalized",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.educations.groups.records.external_ids.identifiers.url",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.educations.groups.records.external_ids.identifiers.relationship",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.educations.groups.records.source",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.educations.groups.records.source.source_orcid",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The ORCID identifier for the individual user (or legacy client application) that created the item. For identifiers of individual users, it may be used to look up ORCID record details via the API."
+    },
+    {
+      "path": "activities.educations.groups.records.source.source_orcid.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.educations.groups.records.source.source_orcid.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.educations.groups.records.source.source_orcid.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.educations.groups.records.source.source_client_id",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The client ID for the client application (Member organization system) that created the item."
+    },
+    {
+      "path": "activities.educations.groups.records.source.source_client_id.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.educations.groups.records.source.source_client_id.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.educations.groups.records.source.source_client_id.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.educations.groups.records.source.source_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The human-readable name of the client application (Member organization system) or individual user that created the item. Value for the same person/organization could change over time. source-orcid or "
+    },
+    {
+      "path": "activities.educations.groups.records.source.assertion_origin_orcid",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The ORCID identifier for the individual user (or legacy client application) made the assertion. If missing, source is the same as assertion origin."
+    },
+    {
+      "path": "activities.educations.groups.records.source.assertion_origin_orcid.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.educations.groups.records.source.assertion_origin_orcid.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.educations.groups.records.source.assertion_origin_orcid.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.educations.groups.records.source.assertion_origin_client_id",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The client ID for the client application (Member organization system) that made the assertion. If missing, source is the same as assertion origin."
+    },
+    {
+      "path": "activities.educations.groups.records.source.assertion_origin_client_id.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.educations.groups.records.source.assertion_origin_client_id.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.educations.groups.records.source.assertion_origin_client_id.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.educations.groups.records.source.assertion_origin_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The human-readable name of the client application (Member organization system) or individual user that created the item. Value for the same person/organization could change over time. source-orcid or "
+    },
+    {
+      "path": "activities.educations.groups.records.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "activities.educations.groups.records.created_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was created."
+    },
+    {
+      "path": "activities.educations.groups.records.visibility",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.educations.groups.records.display_index",
+      "type": "INTEGER",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.employments",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The Employment section records where the researcher is or has been employed. It uses the same fields as the Education section: department-name and role-title for specific information about the departm"
+    },
+    {
+      "path": "activities.employments.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "activities.employments.groups",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": ""
+    },
+    {
+      "path": "activities.employments.groups.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "activities.employments.groups.external_ids",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.employments.groups.external_ids.identifiers",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": "Identifiers for items on the ORCID record are recorded using the common external-ids tag, this includes identifiers in the person, works, funding, and peer review sections. The identifier is described"
+    },
+    {
+      "path": "activities.employments.groups.external_ids.identifiers.type",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Supported external-id-type values can be found at https://pub.orcid.org/v2.0/identifiers"
+    },
+    {
+      "path": "activities.employments.groups.external_ids.identifiers.value",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.employments.groups.external_ids.identifiers.normalized",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.employments.groups.external_ids.identifiers.url",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.employments.groups.external_ids.identifiers.relationship",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.employments.groups.records",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": ""
+    },
+    {
+      "path": "activities.employments.groups.records.department_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The department or subdivision of the organization the affiliation is associated with"
+    },
+    {
+      "path": "activities.employments.groups.records.role_title",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The title given for the position, or the degree earned"
+    },
+    {
+      "path": "activities.employments.groups.records.start_date",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The date the affiliation began"
+    },
+    {
+      "path": "activities.employments.groups.records.start_date.year",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the year of the date."
+    },
+    {
+      "path": "activities.employments.groups.records.start_date.month",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the month of the date."
+    },
+    {
+      "path": "activities.employments.groups.records.start_date.day",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the day of the date."
+    },
+    {
+      "path": "activities.employments.groups.records.end_date",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The date the affiliation ended or will end"
+    },
+    {
+      "path": "activities.employments.groups.records.end_date.year",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the year of the date."
+    },
+    {
+      "path": "activities.employments.groups.records.end_date.month",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the month of the date."
+    },
+    {
+      "path": "activities.employments.groups.records.end_date.day",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the day of the date."
+    },
+    {
+      "path": "activities.employments.groups.records.organization",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "Information about the organization the affiliation was with. A ROR, or Crossref Funder Registry organization identifier is required in 3.0+"
+    },
+    {
+      "path": "activities.employments.groups.records.organization.name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.employments.groups.records.organization.address",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "Information about the physical location of the organization the affiliation is with. A city and country are required"
+    },
+    {
+      "path": "activities.employments.groups.records.organization.address.city",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.employments.groups.records.organization.address.region",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.employments.groups.records.organization.address.country",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.employments.groups.records.organization.disambiguated_organization",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.employments.groups.records.organization.disambiguated_organization.identifier",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.employments.groups.records.organization.disambiguated_organization.source",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.employments.groups.records.url",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "A URL to a resource about the affiliation"
+    },
+    {
+      "path": "activities.employments.groups.records.external_ids",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.employments.groups.records.external_ids.identifiers",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": "Identifiers for items on the ORCID record are recorded using the common external-ids tag, this includes identifiers in the person, works, funding, and peer review sections. The identifier is described"
+    },
+    {
+      "path": "activities.employments.groups.records.external_ids.identifiers.type",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Supported external-id-type values can be found at https://pub.orcid.org/v2.0/identifiers"
+    },
+    {
+      "path": "activities.employments.groups.records.external_ids.identifiers.value",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.employments.groups.records.external_ids.identifiers.normalized",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.employments.groups.records.external_ids.identifiers.url",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.employments.groups.records.external_ids.identifiers.relationship",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.employments.groups.records.source",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.employments.groups.records.source.source_orcid",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The ORCID identifier for the individual user (or legacy client application) that created the item. For identifiers of individual users, it may be used to look up ORCID record details via the API."
+    },
+    {
+      "path": "activities.employments.groups.records.source.source_orcid.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.employments.groups.records.source.source_orcid.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.employments.groups.records.source.source_orcid.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.employments.groups.records.source.source_client_id",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The client ID for the client application (Member organization system) that created the item."
+    },
+    {
+      "path": "activities.employments.groups.records.source.source_client_id.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.employments.groups.records.source.source_client_id.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.employments.groups.records.source.source_client_id.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.employments.groups.records.source.source_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The human-readable name of the client application (Member organization system) or individual user that created the item. Value for the same person/organization could change over time. source-orcid or "
+    },
+    {
+      "path": "activities.employments.groups.records.source.assertion_origin_orcid",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The ORCID identifier for the individual user (or legacy client application) made the assertion. If missing, source is the same as assertion origin."
+    },
+    {
+      "path": "activities.employments.groups.records.source.assertion_origin_orcid.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.employments.groups.records.source.assertion_origin_orcid.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.employments.groups.records.source.assertion_origin_orcid.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.employments.groups.records.source.assertion_origin_client_id",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The client ID for the client application (Member organization system) that made the assertion. If missing, source is the same as assertion origin."
+    },
+    {
+      "path": "activities.employments.groups.records.source.assertion_origin_client_id.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.employments.groups.records.source.assertion_origin_client_id.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.employments.groups.records.source.assertion_origin_client_id.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.employments.groups.records.source.assertion_origin_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The human-readable name of the client application (Member organization system) or individual user that created the item. Value for the same person/organization could change over time. source-orcid or "
+    },
+    {
+      "path": "activities.employments.groups.records.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "activities.employments.groups.records.created_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was created."
+    },
+    {
+      "path": "activities.employments.groups.records.visibility",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.employments.groups.records.display_index",
+      "type": "INTEGER",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.fundings",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The Funding section records monetary awards the researcher has received to support their work. As with works and peer review, funding items that share a common external identifier are grouped together"
+    },
+    {
+      "path": "activities.fundings.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "activities.fundings.groups",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": ""
+    },
+    {
+      "path": "activities.fundings.groups.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "activities.fundings.groups.external_ids",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.fundings.groups.external_ids.identifiers",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": "Identifiers for items on the ORCID record are recorded using the common external-ids tag, this includes identifiers in the person, works, funding, and peer review sections. The identifier is described"
+    },
+    {
+      "path": "activities.fundings.groups.external_ids.identifiers.type",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Supported external-id-type values can be found at https://pub.orcid.org/v2.0/identifiers"
+    },
+    {
+      "path": "activities.fundings.groups.external_ids.identifiers.value",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.fundings.groups.external_ids.identifiers.normalized",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.fundings.groups.external_ids.identifiers.url",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.fundings.groups.external_ids.identifiers.relationship",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.fundings.groups.records",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": ""
+    },
+    {
+      "path": "activities.fundings.groups.records.type",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.fundings.groups.records.title",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The title of the funding award"
+    },
+    {
+      "path": "activities.fundings.groups.records.title.title",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The title of the funding award"
+    },
+    {
+      "path": "activities.fundings.groups.records.title.translated_title",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The title the funding appears underin another language, the langauge of the translated title is recorded as an attribute"
+    },
+    {
+      "path": "activities.fundings.groups.records.title.translated_title.value",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.fundings.groups.records.title.translated_title.language_code",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "A non-empty string that includes a language code to indicate the language used for the string's value."
+    },
+    {
+      "path": "activities.fundings.groups.records.external_ids",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.fundings.groups.records.external_ids.identifiers",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": "Identifiers for items on the ORCID record are recorded using the common external-ids tag, this includes identifiers in the person, works, funding, and peer review sections. The identifier is described"
+    },
+    {
+      "path": "activities.fundings.groups.records.external_ids.identifiers.type",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Supported external-id-type values can be found at https://pub.orcid.org/v2.0/identifiers"
+    },
+    {
+      "path": "activities.fundings.groups.records.external_ids.identifiers.value",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.fundings.groups.records.external_ids.identifiers.normalized",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.fundings.groups.records.external_ids.identifiers.url",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.fundings.groups.records.external_ids.identifiers.relationship",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.fundings.groups.records.start_date",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The date the funding began"
+    },
+    {
+      "path": "activities.fundings.groups.records.start_date.year",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the year of the date."
+    },
+    {
+      "path": "activities.fundings.groups.records.start_date.month",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the month of the date."
+    },
+    {
+      "path": "activities.fundings.groups.records.start_date.day",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the day of the date."
+    },
+    {
+      "path": "activities.fundings.groups.records.end_date",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The date the funding ended or will end"
+    },
+    {
+      "path": "activities.fundings.groups.records.end_date.year",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the year of the date."
+    },
+    {
+      "path": "activities.fundings.groups.records.end_date.month",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the month of the date."
+    },
+    {
+      "path": "activities.fundings.groups.records.end_date.day",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the day of the date."
+    },
+    {
+      "path": "activities.fundings.groups.records.organization",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "Information about the organization that awarded the funding"
+    },
+    {
+      "path": "activities.fundings.groups.records.organization.name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.fundings.groups.records.organization.address",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "Information about the physical location of the organization the affiliation is with. A city and country are required"
+    },
+    {
+      "path": "activities.fundings.groups.records.organization.address.city",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.fundings.groups.records.organization.address.region",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.fundings.groups.records.organization.address.country",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.fundings.groups.records.organization.disambiguated_organization",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.fundings.groups.records.organization.disambiguated_organization.identifier",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.fundings.groups.records.organization.disambiguated_organization.source",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.fundings.groups.records.source",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.fundings.groups.records.source.source_orcid",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The ORCID identifier for the individual user (or legacy client application) that created the item. For identifiers of individual users, it may be used to look up ORCID record details via the API."
+    },
+    {
+      "path": "activities.fundings.groups.records.source.source_orcid.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.fundings.groups.records.source.source_orcid.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.fundings.groups.records.source.source_orcid.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.fundings.groups.records.source.source_client_id",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The client ID for the client application (Member organization system) that created the item."
+    },
+    {
+      "path": "activities.fundings.groups.records.source.source_client_id.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.fundings.groups.records.source.source_client_id.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.fundings.groups.records.source.source_client_id.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.fundings.groups.records.source.source_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The human-readable name of the client application (Member organization system) or individual user that created the item. Value for the same person/organization could change over time. source-orcid or "
+    },
+    {
+      "path": "activities.fundings.groups.records.source.assertion_origin_orcid",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The ORCID identifier for the individual user (or legacy client application) made the assertion. If missing, source is the same as assertion origin."
+    },
+    {
+      "path": "activities.fundings.groups.records.source.assertion_origin_orcid.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.fundings.groups.records.source.assertion_origin_orcid.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.fundings.groups.records.source.assertion_origin_orcid.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.fundings.groups.records.source.assertion_origin_client_id",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The client ID for the client application (Member organization system) that made the assertion. If missing, source is the same as assertion origin."
+    },
+    {
+      "path": "activities.fundings.groups.records.source.assertion_origin_client_id.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.fundings.groups.records.source.assertion_origin_client_id.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.fundings.groups.records.source.assertion_origin_client_id.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.fundings.groups.records.source.assertion_origin_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The human-readable name of the client application (Member organization system) or individual user that created the item. Value for the same person/organization could change over time. source-orcid or "
+    },
+    {
+      "path": "activities.fundings.groups.records.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "activities.fundings.groups.records.created_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was created."
+    },
+    {
+      "path": "activities.fundings.groups.records.visibility",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.fundings.groups.records.display_index",
+      "type": "INTEGER",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.peer_reviews",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The Peer Review section of the record captures the researcher’s review and service activity. As with funding and works, peer review items are grouped together using the group tag. The group can be a j"
+    },
+    {
+      "path": "activities.peer_reviews.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "activities.peer_reviews.groups",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": ""
+    },
+    {
+      "path": "activities.peer_reviews.groups.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "activities.peer_reviews.groups.external_ids",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.peer_reviews.groups.external_ids.identifiers",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": "Identifiers for items on the ORCID record are recorded using the common external-ids tag, this includes identifiers in the person, works, funding, and peer review sections. The identifier is described"
+    },
+    {
+      "path": "activities.peer_reviews.groups.external_ids.identifiers.type",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Supported external-id-type values can be found at https://pub.orcid.org/v2.0/identifiers"
+    },
+    {
+      "path": "activities.peer_reviews.groups.external_ids.identifiers.value",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.peer_reviews.groups.external_ids.identifiers.normalized",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.peer_reviews.groups.external_ids.identifiers.url",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.peer_reviews.groups.external_ids.identifiers.relationship",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": ""
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.external_ids",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.external_ids.identifiers",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": "Identifiers for items on the ORCID record are recorded using the common external-ids tag, this includes identifiers in the person, works, funding, and peer review sections. The identifier is described"
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.external_ids.identifiers.type",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Supported external-id-type values can be found at https://pub.orcid.org/v2.0/identifiers"
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.external_ids.identifiers.value",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.external_ids.identifiers.normalized",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.external_ids.identifiers.url",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.external_ids.identifiers.relationship",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": ""
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.review_group_id",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Identifier for the group that this review should be a part of for aggregation purposes. The Group ID should usually be a valid ISSN."
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.reviewer_role",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The role played by a person in their contribution to a review. This field is selected from a list containing the following values: chair, editor, member, organizer, reviewer"
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.review_type",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The kind of review applied to the subject type reviewed. This field is selected from a list containing the following values: evaluation, review"
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.review_url",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "A link to a representation of the review on the web. This URL refers to the review itself, NOT to the item that was reviewed."
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.completion_date",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.completion_date.year",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the year of the date."
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.completion_date.month",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the month of the date."
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.completion_date.day",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the day of the date."
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.convening_organization",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "Information about the organization convening the review (journal publisher, conference organizer, funding agency, etc.). The organization identifiers such as RINGGOLD, GRID, ROR, FUNDREF or LEI identi"
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.convening_organization.name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.convening_organization.address",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "Information about the physical location of the organization the affiliation is with. A city and country are required"
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.convening_organization.address.city",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.convening_organization.address.region",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.convening_organization.address.country",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.convening_organization.disambiguated_organization",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.convening_organization.disambiguated_organization.identifier",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.convening_organization.disambiguated_organization.source",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.external_ids",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.external_ids.identifiers",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": "Identifiers for items on the ORCID record are recorded using the common external-ids tag, this includes identifiers in the person, works, funding, and peer review sections. The identifier is described"
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.external_ids.identifiers.type",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Supported external-id-type values can be found at https://pub.orcid.org/v2.0/identifiers"
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.external_ids.identifiers.value",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.external_ids.identifiers.normalized",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.external_ids.identifiers.url",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.external_ids.identifiers.relationship",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.source",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.source.source_orcid",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The ORCID identifier for the individual user (or legacy client application) that created the item. For identifiers of individual users, it may be used to look up ORCID record details via the API."
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.source.source_orcid.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.source.source_orcid.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.source.source_orcid.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.source.source_client_id",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The client ID for the client application (Member organization system) that created the item."
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.source.source_client_id.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.source.source_client_id.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.source.source_client_id.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.source.source_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The human-readable name of the client application (Member organization system) or individual user that created the item. Value for the same person/organization could change over time. source-orcid or "
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.source.assertion_origin_orcid",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The ORCID identifier for the individual user (or legacy client application) made the assertion. If missing, source is the same as assertion origin."
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.source.assertion_origin_orcid.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.source.assertion_origin_orcid.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.source.assertion_origin_orcid.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.source.assertion_origin_client_id",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The client ID for the client application (Member organization system) that made the assertion. If missing, source is the same as assertion origin."
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.source.assertion_origin_client_id.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.source.assertion_origin_client_id.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.source.assertion_origin_client_id.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.source.assertion_origin_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The human-readable name of the client application (Member organization system) or individual user that created the item. Value for the same person/organization could change over time. source-orcid or "
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.created_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was created."
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.visibility",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.peer_reviews.groups.groups.records.display_index",
+      "type": "INTEGER",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.works",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The works section records the researcher’s professional outputs. As with funding and peer review, works are grouped together by matching external identifiers using the activites:group tag."
+    },
+    {
+      "path": "activities.works.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "activities.works.groups",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": ""
+    },
+    {
+      "path": "activities.works.groups.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "activities.works.groups.external_ids",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.works.groups.external_ids.identifiers",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": "Identifiers for items on the ORCID record are recorded using the common external-ids tag, this includes identifiers in the person, works, funding, and peer review sections. The identifier is described"
+    },
+    {
+      "path": "activities.works.groups.external_ids.identifiers.type",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Supported external-id-type values can be found at https://pub.orcid.org/v2.0/identifiers"
+    },
+    {
+      "path": "activities.works.groups.external_ids.identifiers.value",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.works.groups.external_ids.identifiers.normalized",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.works.groups.external_ids.identifiers.url",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.works.groups.external_ids.identifiers.relationship",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.works.groups.records",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": ""
+    },
+    {
+      "path": "activities.works.groups.records.type",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Required. The type of work. This field must be selected from https://members.orcid.org/api/resources/work-types"
+    },
+    {
+      "path": "activities.works.groups.records.title",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The title of the publication or group under whichthe work was published.* If a journal, include the journal title of the work.* If a book chapter, use the book title.* If a translation or a manual, us"
+    },
+    {
+      "path": "activities.works.groups.records.title.title",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The main name or title of the work. For a spin-off company, include use the company name"
+    },
+    {
+      "path": "activities.works.groups.records.title.subtitle",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "If the work has a subtitle, include it here."
+    },
+    {
+      "path": "activities.works.groups.records.title.translated_title",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The main title of the work or funding translated into another language. The translated language will be included in the language-code attribute."
+    },
+    {
+      "path": "activities.works.groups.records.title.translated_title.value",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.works.groups.records.title.translated_title.language_code",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "A non-empty string that includes a language code to indicate the language used for the string's value."
+    },
+    {
+      "path": "activities.works.groups.records.journal_title",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The name of a larger collection the work belongs to, such as a journal for journal articles or a book for book chapters"
+    },
+    {
+      "path": "activities.works.groups.records.publication_date",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The date the work was completed"
+    },
+    {
+      "path": "activities.works.groups.records.publication_date.year",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the year of the date."
+    },
+    {
+      "path": "activities.works.groups.records.publication_date.month",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the month of the date."
+    },
+    {
+      "path": "activities.works.groups.records.publication_date.day",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the day of the date."
+    },
+    {
+      "path": "activities.works.groups.records.external_ids",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.works.groups.records.external_ids.identifiers",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": "Identifiers for items on the ORCID record are recorded using the common external-ids tag, this includes identifiers in the person, works, funding, and peer review sections. The identifier is described"
+    },
+    {
+      "path": "activities.works.groups.records.external_ids.identifiers.type",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Supported external-id-type values can be found at https://pub.orcid.org/v2.0/identifiers"
+    },
+    {
+      "path": "activities.works.groups.records.external_ids.identifiers.value",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.works.groups.records.external_ids.identifiers.normalized",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.works.groups.records.external_ids.identifiers.url",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.works.groups.records.external_ids.identifiers.relationship",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.works.groups.records.url",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "A url linking to the work"
+    },
+    {
+      "path": "activities.works.groups.records.source",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.works.groups.records.source.source_orcid",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The ORCID identifier for the individual user (or legacy client application) that created the item. For identifiers of individual users, it may be used to look up ORCID record details via the API."
+    },
+    {
+      "path": "activities.works.groups.records.source.source_orcid.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.works.groups.records.source.source_orcid.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.works.groups.records.source.source_orcid.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.works.groups.records.source.source_client_id",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The client ID for the client application (Member organization system) that created the item."
+    },
+    {
+      "path": "activities.works.groups.records.source.source_client_id.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.works.groups.records.source.source_client_id.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.works.groups.records.source.source_client_id.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.works.groups.records.source.source_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The human-readable name of the client application (Member organization system) or individual user that created the item. Value for the same person/organization could change over time. source-orcid or "
+    },
+    {
+      "path": "activities.works.groups.records.source.assertion_origin_orcid",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The ORCID identifier for the individual user (or legacy client application) made the assertion. If missing, source is the same as assertion origin."
+    },
+    {
+      "path": "activities.works.groups.records.source.assertion_origin_orcid.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.works.groups.records.source.assertion_origin_orcid.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.works.groups.records.source.assertion_origin_orcid.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.works.groups.records.source.assertion_origin_client_id",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The client ID for the client application (Member organization system) that made the assertion. If missing, source is the same as assertion origin."
+    },
+    {
+      "path": "activities.works.groups.records.source.assertion_origin_client_id.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.works.groups.records.source.assertion_origin_client_id.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.works.groups.records.source.assertion_origin_client_id.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.works.groups.records.source.assertion_origin_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The human-readable name of the client application (Member organization system) or individual user that created the item. Value for the same person/organization could change over time. source-orcid or "
+    },
+    {
+      "path": "activities.works.groups.records.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "activities.works.groups.records.created_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was created."
+    },
+    {
+      "path": "activities.works.groups.records.visibility",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.works.groups.records.display_index",
+      "type": "INTEGER",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.invited_positions",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "This section is used for paid or unpaid positions such as visiting lectureships, emeritus professorships, and other invited positions"
+    },
+    {
+      "path": "activities.invited_positions.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "activities.invited_positions.records",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": ""
+    },
+    {
+      "path": "activities.invited_positions.records.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "activities.invited_positions.records.external_ids",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.invited_positions.records.external_ids.identifiers",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": "Identifiers for items on the ORCID record are recorded using the common external-ids tag, this includes identifiers in the person, works, funding, and peer review sections. The identifier is described"
+    },
+    {
+      "path": "activities.invited_positions.records.external_ids.identifiers.type",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Supported external-id-type values can be found at https://pub.orcid.org/v2.0/identifiers"
+    },
+    {
+      "path": "activities.invited_positions.records.external_ids.identifiers.value",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.invited_positions.records.external_ids.identifiers.normalized",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.invited_positions.records.external_ids.identifiers.url",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.invited_positions.records.external_ids.identifiers.relationship",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.invited_positions.records.records",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": ""
+    },
+    {
+      "path": "activities.invited_positions.records.records.department_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The department or subdivision of the organization the affiliation is associated with"
+    },
+    {
+      "path": "activities.invited_positions.records.records.role_title",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The title given for the position, or the degree earned"
+    },
+    {
+      "path": "activities.invited_positions.records.records.start_date",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The date the affiliation began"
+    },
+    {
+      "path": "activities.invited_positions.records.records.start_date.year",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the year of the date."
+    },
+    {
+      "path": "activities.invited_positions.records.records.start_date.month",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the month of the date."
+    },
+    {
+      "path": "activities.invited_positions.records.records.start_date.day",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the day of the date."
+    },
+    {
+      "path": "activities.invited_positions.records.records.end_date",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The date the affiliation ended or will end"
+    },
+    {
+      "path": "activities.invited_positions.records.records.end_date.year",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the year of the date."
+    },
+    {
+      "path": "activities.invited_positions.records.records.end_date.month",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the month of the date."
+    },
+    {
+      "path": "activities.invited_positions.records.records.end_date.day",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the day of the date."
+    },
+    {
+      "path": "activities.invited_positions.records.records.organization",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "Information about the organization the affiliation was with. A ROR, or Crossref Funder Registry organization identifier is required in 3.0+"
+    },
+    {
+      "path": "activities.invited_positions.records.records.organization.name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.invited_positions.records.records.organization.address",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "Information about the physical location of the organization the affiliation is with. A city and country are required"
+    },
+    {
+      "path": "activities.invited_positions.records.records.organization.address.city",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.invited_positions.records.records.organization.address.region",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.invited_positions.records.records.organization.address.country",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.invited_positions.records.records.organization.disambiguated_organization",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.invited_positions.records.records.organization.disambiguated_organization.identifier",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.invited_positions.records.records.organization.disambiguated_organization.source",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.invited_positions.records.records.url",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "A URL to a resource about the affiliation"
+    },
+    {
+      "path": "activities.invited_positions.records.records.external_ids",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.invited_positions.records.records.external_ids.identifiers",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": "Identifiers for items on the ORCID record are recorded using the common external-ids tag, this includes identifiers in the person, works, funding, and peer review sections. The identifier is described"
+    },
+    {
+      "path": "activities.invited_positions.records.records.external_ids.identifiers.type",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Supported external-id-type values can be found at https://pub.orcid.org/v2.0/identifiers"
+    },
+    {
+      "path": "activities.invited_positions.records.records.external_ids.identifiers.value",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.invited_positions.records.records.external_ids.identifiers.normalized",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.invited_positions.records.records.external_ids.identifiers.url",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.invited_positions.records.records.external_ids.identifiers.relationship",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.invited_positions.records.records.source",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.invited_positions.records.records.source.source_orcid",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The ORCID identifier for the individual user (or legacy client application) that created the item. For identifiers of individual users, it may be used to look up ORCID record details via the API."
+    },
+    {
+      "path": "activities.invited_positions.records.records.source.source_orcid.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.invited_positions.records.records.source.source_orcid.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.invited_positions.records.records.source.source_orcid.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.invited_positions.records.records.source.source_client_id",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The client ID for the client application (Member organization system) that created the item."
+    },
+    {
+      "path": "activities.invited_positions.records.records.source.source_client_id.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.invited_positions.records.records.source.source_client_id.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.invited_positions.records.records.source.source_client_id.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.invited_positions.records.records.source.source_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The human-readable name of the client application (Member organization system) or individual user that created the item. Value for the same person/organization could change over time. source-orcid or "
+    },
+    {
+      "path": "activities.invited_positions.records.records.source.assertion_origin_orcid",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The ORCID identifier for the individual user (or legacy client application) made the assertion. If missing, source is the same as assertion origin."
+    },
+    {
+      "path": "activities.invited_positions.records.records.source.assertion_origin_orcid.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.invited_positions.records.records.source.assertion_origin_orcid.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.invited_positions.records.records.source.assertion_origin_orcid.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.invited_positions.records.records.source.assertion_origin_client_id",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The client ID for the client application (Member organization system) that made the assertion. If missing, source is the same as assertion origin."
+    },
+    {
+      "path": "activities.invited_positions.records.records.source.assertion_origin_client_id.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.invited_positions.records.records.source.assertion_origin_client_id.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.invited_positions.records.records.source.assertion_origin_client_id.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.invited_positions.records.records.source.assertion_origin_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The human-readable name of the client application (Member organization system) or individual user that created the item. Value for the same person/organization could change over time. source-orcid or "
+    },
+    {
+      "path": "activities.invited_positions.records.records.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "activities.invited_positions.records.records.created_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was created."
+    },
+    {
+      "path": "activities.invited_positions.records.records.visibility",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.invited_positions.records.records.display_index",
+      "type": "INTEGER",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.memberships",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "This is where information about the researcher’s membership of an association or society — paid or gratis — is recorded."
+    },
+    {
+      "path": "activities.memberships.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "activities.memberships.groups",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": ""
+    },
+    {
+      "path": "activities.memberships.groups.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "activities.memberships.groups.external_ids",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.memberships.groups.external_ids.identifiers",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": "Identifiers for items on the ORCID record are recorded using the common external-ids tag, this includes identifiers in the person, works, funding, and peer review sections. The identifier is described"
+    },
+    {
+      "path": "activities.memberships.groups.external_ids.identifiers.type",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Supported external-id-type values can be found at https://pub.orcid.org/v2.0/identifiers"
+    },
+    {
+      "path": "activities.memberships.groups.external_ids.identifiers.value",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.memberships.groups.external_ids.identifiers.normalized",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.memberships.groups.external_ids.identifiers.url",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.memberships.groups.external_ids.identifiers.relationship",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.memberships.groups.records",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": ""
+    },
+    {
+      "path": "activities.memberships.groups.records.department_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The department or subdivision of the organization the affiliation is associated with"
+    },
+    {
+      "path": "activities.memberships.groups.records.role_title",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The title given for the position, or the degree earned"
+    },
+    {
+      "path": "activities.memberships.groups.records.start_date",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The date the affiliation began"
+    },
+    {
+      "path": "activities.memberships.groups.records.start_date.year",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the year of the date."
+    },
+    {
+      "path": "activities.memberships.groups.records.start_date.month",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the month of the date."
+    },
+    {
+      "path": "activities.memberships.groups.records.start_date.day",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the day of the date."
+    },
+    {
+      "path": "activities.memberships.groups.records.end_date",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The date the affiliation ended or will end"
+    },
+    {
+      "path": "activities.memberships.groups.records.end_date.year",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the year of the date."
+    },
+    {
+      "path": "activities.memberships.groups.records.end_date.month",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the month of the date."
+    },
+    {
+      "path": "activities.memberships.groups.records.end_date.day",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the day of the date."
+    },
+    {
+      "path": "activities.memberships.groups.records.organization",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "Information about the organization the affiliation was with. A ROR, or Crossref Funder Registry organization identifier is required in 3.0+"
+    },
+    {
+      "path": "activities.memberships.groups.records.organization.name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.memberships.groups.records.organization.address",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "Information about the physical location of the organization the affiliation is with. A city and country are required"
+    },
+    {
+      "path": "activities.memberships.groups.records.organization.address.city",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.memberships.groups.records.organization.address.region",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.memberships.groups.records.organization.address.country",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.memberships.groups.records.organization.disambiguated_organization",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.memberships.groups.records.organization.disambiguated_organization.identifier",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.memberships.groups.records.organization.disambiguated_organization.source",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.memberships.groups.records.url",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "A URL to a resource about the affiliation"
+    },
+    {
+      "path": "activities.memberships.groups.records.external_ids",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.memberships.groups.records.external_ids.identifiers",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": "Identifiers for items on the ORCID record are recorded using the common external-ids tag, this includes identifiers in the person, works, funding, and peer review sections. The identifier is described"
+    },
+    {
+      "path": "activities.memberships.groups.records.external_ids.identifiers.type",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Supported external-id-type values can be found at https://pub.orcid.org/v2.0/identifiers"
+    },
+    {
+      "path": "activities.memberships.groups.records.external_ids.identifiers.value",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.memberships.groups.records.external_ids.identifiers.normalized",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.memberships.groups.records.external_ids.identifiers.url",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.memberships.groups.records.external_ids.identifiers.relationship",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.memberships.groups.records.source",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.memberships.groups.records.source.source_orcid",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The ORCID identifier for the individual user (or legacy client application) that created the item. For identifiers of individual users, it may be used to look up ORCID record details via the API."
+    },
+    {
+      "path": "activities.memberships.groups.records.source.source_orcid.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.memberships.groups.records.source.source_orcid.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.memberships.groups.records.source.source_orcid.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.memberships.groups.records.source.source_client_id",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The client ID for the client application (Member organization system) that created the item."
+    },
+    {
+      "path": "activities.memberships.groups.records.source.source_client_id.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.memberships.groups.records.source.source_client_id.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.memberships.groups.records.source.source_client_id.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.memberships.groups.records.source.source_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The human-readable name of the client application (Member organization system) or individual user that created the item. Value for the same person/organization could change over time. source-orcid or "
+    },
+    {
+      "path": "activities.memberships.groups.records.source.assertion_origin_orcid",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The ORCID identifier for the individual user (or legacy client application) made the assertion. If missing, source is the same as assertion origin."
+    },
+    {
+      "path": "activities.memberships.groups.records.source.assertion_origin_orcid.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.memberships.groups.records.source.assertion_origin_orcid.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.memberships.groups.records.source.assertion_origin_orcid.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.memberships.groups.records.source.assertion_origin_client_id",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The client ID for the client application (Member organization system) that made the assertion. If missing, source is the same as assertion origin."
+    },
+    {
+      "path": "activities.memberships.groups.records.source.assertion_origin_client_id.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.memberships.groups.records.source.assertion_origin_client_id.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.memberships.groups.records.source.assertion_origin_client_id.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.memberships.groups.records.source.assertion_origin_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The human-readable name of the client application (Member organization system) or individual user that created the item. Value for the same person/organization could change over time. source-orcid or "
+    },
+    {
+      "path": "activities.memberships.groups.records.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "activities.memberships.groups.records.created_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was created."
+    },
+    {
+      "path": "activities.memberships.groups.records.visibility",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.memberships.groups.records.display_index",
+      "type": "INTEGER",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.qualifications",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "In addition to educational qualifications (which are recorded in the Education section), information about other types of qualifications can also be added to ORCID records. This section is where parti"
+    },
+    {
+      "path": "activities.qualifications.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "activities.qualifications.groups",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": ""
+    },
+    {
+      "path": "activities.qualifications.groups.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "activities.qualifications.groups.external_ids",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.qualifications.groups.external_ids.identifiers",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": "Identifiers for items on the ORCID record are recorded using the common external-ids tag, this includes identifiers in the person, works, funding, and peer review sections. The identifier is described"
+    },
+    {
+      "path": "activities.qualifications.groups.external_ids.identifiers.type",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Supported external-id-type values can be found at https://pub.orcid.org/v2.0/identifiers"
+    },
+    {
+      "path": "activities.qualifications.groups.external_ids.identifiers.value",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.qualifications.groups.external_ids.identifiers.normalized",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.qualifications.groups.external_ids.identifiers.url",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.qualifications.groups.external_ids.identifiers.relationship",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.qualifications.groups.records",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": ""
+    },
+    {
+      "path": "activities.qualifications.groups.records.department_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The department or subdivision of the organization the affiliation is associated with"
+    },
+    {
+      "path": "activities.qualifications.groups.records.role_title",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The title given for the position, or the degree earned"
+    },
+    {
+      "path": "activities.qualifications.groups.records.start_date",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The date the affiliation began"
+    },
+    {
+      "path": "activities.qualifications.groups.records.start_date.year",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the year of the date."
+    },
+    {
+      "path": "activities.qualifications.groups.records.start_date.month",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the month of the date."
+    },
+    {
+      "path": "activities.qualifications.groups.records.start_date.day",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the day of the date."
+    },
+    {
+      "path": "activities.qualifications.groups.records.end_date",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The date the affiliation ended or will end"
+    },
+    {
+      "path": "activities.qualifications.groups.records.end_date.year",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the year of the date."
+    },
+    {
+      "path": "activities.qualifications.groups.records.end_date.month",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the month of the date."
+    },
+    {
+      "path": "activities.qualifications.groups.records.end_date.day",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the day of the date."
+    },
+    {
+      "path": "activities.qualifications.groups.records.organization",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "Information about the organization the affiliation was with. A ROR, or Crossref Funder Registry organization identifier is required in 3.0+"
+    },
+    {
+      "path": "activities.qualifications.groups.records.organization.name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.qualifications.groups.records.organization.address",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "Information about the physical location of the organization the affiliation is with. A city and country are required"
+    },
+    {
+      "path": "activities.qualifications.groups.records.organization.address.city",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.qualifications.groups.records.organization.address.region",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.qualifications.groups.records.organization.address.country",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.qualifications.groups.records.organization.disambiguated_organization",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.qualifications.groups.records.organization.disambiguated_organization.identifier",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.qualifications.groups.records.organization.disambiguated_organization.source",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.qualifications.groups.records.url",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "A URL to a resource about the affiliation"
+    },
+    {
+      "path": "activities.qualifications.groups.records.external_ids",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.qualifications.groups.records.external_ids.identifiers",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": "Identifiers for items on the ORCID record are recorded using the common external-ids tag, this includes identifiers in the person, works, funding, and peer review sections. The identifier is described"
+    },
+    {
+      "path": "activities.qualifications.groups.records.external_ids.identifiers.type",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Supported external-id-type values can be found at https://pub.orcid.org/v2.0/identifiers"
+    },
+    {
+      "path": "activities.qualifications.groups.records.external_ids.identifiers.value",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.qualifications.groups.records.external_ids.identifiers.normalized",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.qualifications.groups.records.external_ids.identifiers.url",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.qualifications.groups.records.external_ids.identifiers.relationship",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.qualifications.groups.records.source",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.qualifications.groups.records.source.source_orcid",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The ORCID identifier for the individual user (or legacy client application) that created the item. For identifiers of individual users, it may be used to look up ORCID record details via the API."
+    },
+    {
+      "path": "activities.qualifications.groups.records.source.source_orcid.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.qualifications.groups.records.source.source_orcid.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.qualifications.groups.records.source.source_orcid.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.qualifications.groups.records.source.source_client_id",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The client ID for the client application (Member organization system) that created the item."
+    },
+    {
+      "path": "activities.qualifications.groups.records.source.source_client_id.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.qualifications.groups.records.source.source_client_id.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.qualifications.groups.records.source.source_client_id.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.qualifications.groups.records.source.source_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The human-readable name of the client application (Member organization system) or individual user that created the item. Value for the same person/organization could change over time. source-orcid or "
+    },
+    {
+      "path": "activities.qualifications.groups.records.source.assertion_origin_orcid",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The ORCID identifier for the individual user (or legacy client application) made the assertion. If missing, source is the same as assertion origin."
+    },
+    {
+      "path": "activities.qualifications.groups.records.source.assertion_origin_orcid.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.qualifications.groups.records.source.assertion_origin_orcid.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.qualifications.groups.records.source.assertion_origin_orcid.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.qualifications.groups.records.source.assertion_origin_client_id",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The client ID for the client application (Member organization system) that made the assertion. If missing, source is the same as assertion origin."
+    },
+    {
+      "path": "activities.qualifications.groups.records.source.assertion_origin_client_id.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.qualifications.groups.records.source.assertion_origin_client_id.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.qualifications.groups.records.source.assertion_origin_client_id.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.qualifications.groups.records.source.assertion_origin_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The human-readable name of the client application (Member organization system) or individual user that created the item. Value for the same person/organization could change over time. source-orcid or "
+    },
+    {
+      "path": "activities.qualifications.groups.records.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "activities.qualifications.groups.records.created_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was created."
+    },
+    {
+      "path": "activities.qualifications.groups.records.visibility",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.qualifications.groups.records.display_index",
+      "type": "INTEGER",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.services",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "Any form of service provided by the researcher as part of their professionalactivities is recorded here. This includes&nbsp;serving on a society or editorial board, review service, extension work, and"
+    },
+    {
+      "path": "activities.services.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "activities.services.groups",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": ""
+    },
+    {
+      "path": "activities.services.groups.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "activities.services.groups.external_ids",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.services.groups.external_ids.identifiers",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": "Identifiers for items on the ORCID record are recorded using the common external-ids tag, this includes identifiers in the person, works, funding, and peer review sections. The identifier is described"
+    },
+    {
+      "path": "activities.services.groups.external_ids.identifiers.type",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Supported external-id-type values can be found at https://pub.orcid.org/v2.0/identifiers"
+    },
+    {
+      "path": "activities.services.groups.external_ids.identifiers.value",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.services.groups.external_ids.identifiers.normalized",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.services.groups.external_ids.identifiers.url",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.services.groups.external_ids.identifiers.relationship",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.services.groups.records",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": ""
+    },
+    {
+      "path": "activities.services.groups.records.department_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The department or subdivision of the organization the affiliation is associated with"
+    },
+    {
+      "path": "activities.services.groups.records.role_title",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The title given for the position, or the degree earned"
+    },
+    {
+      "path": "activities.services.groups.records.start_date",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The date the affiliation began"
+    },
+    {
+      "path": "activities.services.groups.records.start_date.year",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the year of the date."
+    },
+    {
+      "path": "activities.services.groups.records.start_date.month",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the month of the date."
+    },
+    {
+      "path": "activities.services.groups.records.start_date.day",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the day of the date."
+    },
+    {
+      "path": "activities.services.groups.records.end_date",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The date the affiliation ended or will end"
+    },
+    {
+      "path": "activities.services.groups.records.end_date.year",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the year of the date."
+    },
+    {
+      "path": "activities.services.groups.records.end_date.month",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the month of the date."
+    },
+    {
+      "path": "activities.services.groups.records.end_date.day",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the day of the date."
+    },
+    {
+      "path": "activities.services.groups.records.organization",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "Information about the organization the affiliation was with. A ROR, or Crossref Funder Registry organization identifier is required in 3.0+"
+    },
+    {
+      "path": "activities.services.groups.records.organization.name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.services.groups.records.organization.address",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "Information about the physical location of the organization the affiliation is with. A city and country are required"
+    },
+    {
+      "path": "activities.services.groups.records.organization.address.city",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.services.groups.records.organization.address.region",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.services.groups.records.organization.address.country",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.services.groups.records.organization.disambiguated_organization",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.services.groups.records.organization.disambiguated_organization.identifier",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.services.groups.records.organization.disambiguated_organization.source",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.services.groups.records.url",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "A URL to a resource about the affiliation"
+    },
+    {
+      "path": "activities.services.groups.records.external_ids",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.services.groups.records.external_ids.identifiers",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": "Identifiers for items on the ORCID record are recorded using the common external-ids tag, this includes identifiers in the person, works, funding, and peer review sections. The identifier is described"
+    },
+    {
+      "path": "activities.services.groups.records.external_ids.identifiers.type",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Supported external-id-type values can be found at https://pub.orcid.org/v2.0/identifiers"
+    },
+    {
+      "path": "activities.services.groups.records.external_ids.identifiers.value",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.services.groups.records.external_ids.identifiers.normalized",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.services.groups.records.external_ids.identifiers.url",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.services.groups.records.external_ids.identifiers.relationship",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.services.groups.records.source",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.services.groups.records.source.source_orcid",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The ORCID identifier for the individual user (or legacy client application) that created the item. For identifiers of individual users, it may be used to look up ORCID record details via the API."
+    },
+    {
+      "path": "activities.services.groups.records.source.source_orcid.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.services.groups.records.source.source_orcid.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.services.groups.records.source.source_orcid.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.services.groups.records.source.source_client_id",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The client ID for the client application (Member organization system) that created the item."
+    },
+    {
+      "path": "activities.services.groups.records.source.source_client_id.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.services.groups.records.source.source_client_id.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.services.groups.records.source.source_client_id.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.services.groups.records.source.source_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The human-readable name of the client application (Member organization system) or individual user that created the item. Value for the same person/organization could change over time. source-orcid or "
+    },
+    {
+      "path": "activities.services.groups.records.source.assertion_origin_orcid",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The ORCID identifier for the individual user (or legacy client application) made the assertion. If missing, source is the same as assertion origin."
+    },
+    {
+      "path": "activities.services.groups.records.source.assertion_origin_orcid.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.services.groups.records.source.assertion_origin_orcid.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.services.groups.records.source.assertion_origin_orcid.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.services.groups.records.source.assertion_origin_client_id",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The client ID for the client application (Member organization system) that made the assertion. If missing, source is the same as assertion origin."
+    },
+    {
+      "path": "activities.services.groups.records.source.assertion_origin_client_id.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.services.groups.records.source.assertion_origin_client_id.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.services.groups.records.source.assertion_origin_client_id.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.services.groups.records.source.assertion_origin_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The human-readable name of the client application (Member organization system) or individual user that created the item. Value for the same person/organization could change over time. source-orcid or "
+    },
+    {
+      "path": "activities.services.groups.records.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "activities.services.groups.records.created_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was created."
+    },
+    {
+      "path": "activities.services.groups.records.visibility",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.services.groups.records.display_index",
+      "type": "INTEGER",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.research_resources",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The Research Resources section is for recording the specialist resourcesthat researchers use for their research, and which typically require a specific proposal process or credential to access. This i"
+    },
+    {
+      "path": "activities.research_resources.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "activities.research_resources.groups",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": ""
+    },
+    {
+      "path": "activities.research_resources.groups.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "activities.research_resources.groups.external_ids",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.research_resources.groups.external_ids.identifiers",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": "Identifiers for items on the ORCID record are recorded using the common external-ids tag, this includes identifiers in the person, works, funding, and peer review sections. The identifier is described"
+    },
+    {
+      "path": "activities.research_resources.groups.external_ids.identifiers.type",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Supported external-id-type values can be found at https://pub.orcid.org/v2.0/identifiers"
+    },
+    {
+      "path": "activities.research_resources.groups.external_ids.identifiers.value",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.research_resources.groups.external_ids.identifiers.normalized",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.research_resources.groups.external_ids.identifiers.url",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.research_resources.groups.external_ids.identifiers.relationship",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.research_resources.groups.records",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": ""
+    },
+    {
+      "path": "activities.research_resources.groups.records.proposal",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.research_resources.groups.records.proposal.title",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.research_resources.groups.records.proposal.title.title",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The name of the resource"
+    },
+    {
+      "path": "activities.research_resources.groups.records.proposal.title.translated_title",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The title the proposal appears under in another language,the language of the translated title is recorded as an attribute"
+    },
+    {
+      "path": "activities.research_resources.groups.records.proposal.title.translated_title.value",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.research_resources.groups.records.proposal.title.translated_title.language_code",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "A non-empty string that includes a language code to indicate the language used for the string's value."
+    },
+    {
+      "path": "activities.research_resources.groups.records.proposal.start_date",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The date the access started"
+    },
+    {
+      "path": "activities.research_resources.groups.records.proposal.start_date.year",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the year of the date."
+    },
+    {
+      "path": "activities.research_resources.groups.records.proposal.start_date.month",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the month of the date."
+    },
+    {
+      "path": "activities.research_resources.groups.records.proposal.start_date.day",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the day of the date."
+    },
+    {
+      "path": "activities.research_resources.groups.records.proposal.end_date",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The date the access ended or will end"
+    },
+    {
+      "path": "activities.research_resources.groups.records.proposal.end_date.year",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the year of the date."
+    },
+    {
+      "path": "activities.research_resources.groups.records.proposal.end_date.month",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the month of the date."
+    },
+    {
+      "path": "activities.research_resources.groups.records.proposal.end_date.day",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Used with the fuzzy-date type. Represents the day of the date."
+    },
+    {
+      "path": "activities.research_resources.groups.records.proposal.hosts",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.research_resources.groups.records.proposal.hosts.organizations",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": "The organization that receives and processes resource proposals or requests. Proposal host may or may not be the same as resource host."
+    },
+    {
+      "path": "activities.research_resources.groups.records.proposal.hosts.organizations.name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.research_resources.groups.records.proposal.hosts.organizations.address",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "Information about the physical location of the organization the affiliation is with. A city and country are required"
+    },
+    {
+      "path": "activities.research_resources.groups.records.proposal.hosts.organizations.address.city",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.research_resources.groups.records.proposal.hosts.organizations.address.region",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.research_resources.groups.records.proposal.hosts.organizations.address.country",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.research_resources.groups.records.proposal.hosts.organizations.disambiguated_organization",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.research_resources.groups.records.proposal.hosts.organizations.disambiguated_organization.identifier",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.research_resources.groups.records.proposal.hosts.organizations.disambiguated_organization.source",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.research_resources.groups.records.proposal.external_ids",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.research_resources.groups.records.proposal.external_ids.identifiers",
+      "type": "RECORD",
+      "mode": "REPEATED",
+      "description": "Identifiers for items on the ORCID record are recorded using the common external-ids tag, this includes identifiers in the person, works, funding, and peer review sections. The identifier is described"
+    },
+    {
+      "path": "activities.research_resources.groups.records.proposal.external_ids.identifiers.type",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "Supported external-id-type values can be found at https://pub.orcid.org/v2.0/identifiers"
+    },
+    {
+      "path": "activities.research_resources.groups.records.proposal.external_ids.identifiers.value",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.research_resources.groups.records.proposal.external_ids.identifiers.normalized",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.research_resources.groups.records.proposal.external_ids.identifiers.url",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.research_resources.groups.records.proposal.external_ids.identifiers.relationship",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.research_resources.groups.records.proposal.url",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "A link to the proposal"
+    },
+    {
+      "path": "activities.research_resources.groups.records.source",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.research_resources.groups.records.source.source_orcid",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The ORCID identifier for the individual user (or legacy client application) that created the item. For identifiers of individual users, it may be used to look up ORCID record details via the API."
+    },
+    {
+      "path": "activities.research_resources.groups.records.source.source_orcid.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.research_resources.groups.records.source.source_orcid.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.research_resources.groups.records.source.source_orcid.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.research_resources.groups.records.source.source_client_id",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The client ID for the client application (Member organization system) that created the item."
+    },
+    {
+      "path": "activities.research_resources.groups.records.source.source_client_id.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.research_resources.groups.records.source.source_client_id.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.research_resources.groups.records.source.source_client_id.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.research_resources.groups.records.source.source_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The human-readable name of the client application (Member organization system) or individual user that created the item. Value for the same person/organization could change over time. source-orcid or "
+    },
+    {
+      "path": "activities.research_resources.groups.records.source.assertion_origin_orcid",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The ORCID identifier for the individual user (or legacy client application) made the assertion. If missing, source is the same as assertion origin."
+    },
+    {
+      "path": "activities.research_resources.groups.records.source.assertion_origin_orcid.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.research_resources.groups.records.source.assertion_origin_orcid.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.research_resources.groups.records.source.assertion_origin_orcid.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.research_resources.groups.records.source.assertion_origin_client_id",
+      "type": "RECORD",
+      "mode": "NULLABLE",
+      "description": "The client ID for the client application (Member organization system) that made the assertion. If missing, source is the same as assertion origin."
+    },
+    {
+      "path": "activities.research_resources.groups.records.source.assertion_origin_client_id.uri",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID iD in URI form (preferred)."
+    },
+    {
+      "path": "activities.research_resources.groups.records.source.assertion_origin_client_id.path",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID path (16-character identifier) of the ORCID iD."
+    },
+    {
+      "path": "activities.research_resources.groups.records.source.assertion_origin_client_id.host",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "ORCID host (base URL) of the ORCID iD."
+    },
+    {
+      "path": "activities.research_resources.groups.records.source.assertion_origin_name",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The human-readable name of the client application (Member organization system) or individual user that created the item. Value for the same person/organization could change over time. source-orcid or "
+    },
+    {
+      "path": "activities.research_resources.groups.records.last_modified_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was last modified."
+    },
+    {
+      "path": "activities.research_resources.groups.records.created_date",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": "The date time when the element was created."
+    },
+    {
+      "path": "activities.research_resources.groups.records.visibility",
+      "type": "STRING",
+      "mode": "NULLABLE",
+      "description": ""
+    },
+    {
+      "path": "activities.research_resources.groups.records.display_index",
+      "type": "INTEGER",
+      "mode": "NULLABLE",
+      "description": ""
+    }
+  ]
+}

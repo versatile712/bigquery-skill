@@ -1,38 +1,89 @@
-# ORCID (scaffold — not yet in BigQuery)
+# ORCID Public Data (via Dimensions on BigQuery)
 
-Status: **scaffold**. ORCID Public Data File is not on BigQuery by default;
-current workflow parses the annual dump locally to Parquet, then optionally
-loads to BigQuery under the user's own project.
+Verified against live BigQuery on 2026-08-12 by
+`nsfcopenalex` billing project.
 
 ## Source
 
-- ORCID Public Data File (annual): https://orcid.figshare.com/
-- Format: multi-part `tar.gz`, one XML per record, ORCID schema 3.0
-- Sharded by iD suffix (last 3 chars → directory)
-- Contains **public** records only
+Dimensions publishes ORCID Public Data File as a **single wide table with
+deeply nested STRUCT / REPEATED fields** — one row per ORCID iD, everything
+else nested inside. This means:
 
-## Target BigQuery layout (proposed)
+- **No traditional JOINs** — you `UNNEST` REPEATED arrays instead
+- **All data in one table** — but that table is 100+ GB, so filter early
+- **Free tier**: 1 TB scan/month per Google account (Dimensions open dataset policy)
 
-Once loaded, use `<your-project>.orcid_<yyyymm>.*`.
+Source ref: <https://docs.dimensions.ai/bigquery/open-datasets.html#orcid-dataset>
+Sample queries: <https://bigquery-lab.dimensions.ai/tutorials/09-orcid/>
 
-| table | rows (order of) | primary key |
-|---|---|---|
-| person | 20M | `orcid` |
-| employment | 40M | `(orcid, put_code)` |
-| education  | 30M | `(orcid, put_code)` |
-| external_identifier | 30M | `(orcid, put_code)` |
+## Tables
 
-## Bridging to OpenAlex
+| Table | Type | Size | Notes |
+|---|---|---|---|
+| `ds-open-datasets.orcid.summaries_2024` | BASE TABLE | 103 GB | **Default** — Feb 2025 release |
+| `ds-open-datasets.orcid.summaries_2025` | CLONE | 122 GB | Latest snapshot (not yet in Dimensions docs) |
+| `ds-open-datasets.orcid.summaries_2023` | CLONE | 84 GB | Historical |
 
-`openalex.author.orcid` → `orcid.person.orcid`. Cardinality: an OpenAlex
-`author_id` can be split across multiple ORCID iDs (disambiguation errors);
-one ORCID iD is normally a single person but self-registration mistakes
-happen. Handle m:n, not 1:1.
+License: **CC0** (ORCID Public Data File). Update cadence: yearly.
 
-## TODO (fill when data is loaded)
+## Top-level structure
 
-- [ ] Freeze release version (e.g. `orcid_2025_summary`)
-- [ ] Load parquet → BigQuery via `bq load` or Storage Write API
-- [ ] Populate `dictionary.csv` with real column types
-- [ ] Populate `relationships.md` with ROR org identifiers on employment
-- [ ] Add 3–5 canonical examples in `examples.sql`
+```
+orcid_identifier          # primary key — .path is the 16-char ORCID iD
+preferences               # locale
+history                   # created / modified / deactivated dates, verified email
+person                    # name, other_names, biography, urls, emails, addresses, keywords, external_identifiers
+activities                # educations, employments, fundings, peer_reviews, works,
+                          # invited_positions, memberships, qualifications, services, research_resources
+```
+
+## The universal UNNEST pattern
+
+Almost every "activity" list follows this shape:
+
+```sql
+FROM `ds-open-datasets.orcid.summaries_2024`,
+     UNNEST(activities.<KIND>.groups) AS grp,
+     UNNEST(grp.records)              AS record
+```
+
+Where `<KIND>` is one of `educations | employments | fundings | works | memberships |
+qualifications | services | research_resources`.
+
+**Two exceptions** (schema inconsistency in upstream ORCID XML):
+
+- `activities.peer_reviews.groups.groups.records` — one extra `.groups` level
+- `activities.invited_positions.records.records` — uses `records.records`, not `groups.records`
+
+## Field dictionary
+
+See `dictionary.csv` (top ~80 useful paths — the full 892-path schema is in `assets/schema.json`).
+
+## Relationships
+
+See `relationships.md`.
+
+## Canonical examples
+
+See `examples.sql`.
+
+## Gotchas (verified against real data)
+
+1. **Dates are STRING**, not INT or DATE.
+   Cast with `SAFE_CAST(record.start_date.year AS INT64)`.
+2. **`orcid_identifier.path`** is the 16-char iD (e.g. `0000-0002-1825-0097`) — not the URL.
+   OpenAlex's `author.orcid` may store the full URL `https://orcid.org/...`; when bridging, strip prefix or use `ENDS_WITH`.
+3. **Organization disambiguation `source` values**: `ROR`, `RINGGOLD`, `FUNDREF`, `GRID`, or NULL.
+   For 2024 employments: ROR covers ~228k, RINGGOLD ~3k, FUNDREF ~2k, GRID ~0.6k, NULL ~30k.
+4. **`SELECT *` on any `summaries_YYYY` table** ≈ **$0.60+ per query**. Never do it.
+5. **Empty vs null**: `activities.employments.groups` can be empty array `[]` for accounts with no employments — `UNNEST` yields zero rows, so use `LEFT JOIN UNNEST(...)` if you need to keep the ORCID row.
+
+## Cost calibration (dry-run measurements)
+
+| Query pattern | Bytes scanned |
+|---|---|
+| `SELECT COUNT(*) WHERE history.deactivation_date IS NULL` | ~0 GB (metadata only) |
+| Full UNNEST of `activities.employments` for all ORCIDs | ~40–60 GB |
+| Filtered to a single ORCID iD | < 100 MB after clustering hits |
+
+Numbers > 5 GB should trigger user confirmation (see `../../reference/cost-safety.md`).

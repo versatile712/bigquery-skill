@@ -1,51 +1,65 @@
-# cursor-skill-bigquery
+# bigquery-skill
 
-A **Cursor Agent Skill** for writing, reviewing, and executing Google BigQuery
-Standard SQL, with a pluggable **dataset adapter** system so you can add
-support for new datasets (OpenAlex, ORCID, Crossref, custom project datasets, …)
-without touching the core skill.
+A **platform-agnostic Agent Skill** for writing, reviewing, and executing
+Google BigQuery Standard SQL, with a pluggable **dataset adapter** system so
+you can add support for new datasets (OpenAlex, ORCID, Crossref, custom
+project datasets, …) without touching the core skill.
 
-Private repository — internal use by the author and collaborators.
+Works with any agent runtime that reads local `SKILL.md` files — verified
+targets: **Cursor**, **Claude Code**, **Codex CLI**. Any other SKILL.md-
+compatible platform should work too by placing the folder in the
+platform's skills directory.
+
+Private repository — internal use by the author and authorized collaborators.
 
 ## Supported datasets
 
-| name | status | notes |
+| name | status | source |
 |---|---|---|
-| `openalex` | ready | CWTS Leiden mirror (`cwts-leiden.openalex_2025aug`, institution tables on `openalex_2024aug`) |
-| `orcid`    | scaffold | ORCID Public Data File; planned load path from parquet → BQ |
+| `openalex` | ready | CWTS Leiden mirror (`cwts-leiden.openalex_2025aug`; institution tables on `openalex_2024aug`) |
+| `orcid` | ready | Dimensions on BQ (`ds-open-datasets.orcid.summaries_2024` + 2023/2025 clones). Schema verified against live table |
 
 See `datasets/INDEX.md` for the machine-readable registry.
 
-## Install (for a Cursor user)
+## Install
 
-### Option A — personal skill (available in every project)
-
-Windows PowerShell:
+### One command (auto-detects agent platforms on your machine)
 
 ```powershell
-git clone <this-repo-url> "$env:USERPROFILE\.cursor\skills\bigquery"
-```
-
-macOS / Linux:
-
-```bash
-git clone <this-repo-url> ~/.cursor/skills/bigquery
-```
-
-Or run the bundled installer after cloning anywhere:
-
-```powershell
-.\install.ps1        # Windows
+# Windows PowerShell — from inside the cloned repo
+.\install.ps1
 ```
 
 ```bash
-./install.sh         # macOS / Linux
+# macOS / Linux
+./install.sh
 ```
 
-### Option B — project skill (checked in with a repo)
+The installer looks for these directories and installs into each that exists:
 
-Copy the entire folder to `<your-project>/.cursor/skills/bigquery/` and
-commit it. Every collaborator gets it automatically.
+| Platform | Target directory |
+|---|---|
+| Cursor | `~/.cursor/skills/bigquery/` |
+| Claude Code | `~/.claude/skills/bigquery/` |
+| Codex CLI | `~/.codex/skills/bigquery/` |
+
+It prefers **symlink** so `git pull` in the repo updates every installed
+copy at once. Falls back to copy if symlink is not permitted (Windows
+without Developer Mode).
+
+### Manual install (single platform)
+
+```bash
+git clone <this-repo-url> ~/.cursor/skills/bigquery         # Cursor
+git clone <this-repo-url> ~/.claude/skills/bigquery         # Claude Code
+git clone <this-repo-url> ~/.codex/skills/bigquery          # Codex CLI
+```
+
+### Project-scoped install (checked in with a project repo)
+
+Copy or add-as-submodule the folder to `<your-project>/.cursor/skills/bigquery/`
+(or `.claude/skills/bigquery/`, etc.) and commit it. Every collaborator gets
+it automatically when they clone your project.
 
 ## Prerequisites
 
@@ -55,24 +69,25 @@ gcloud auth application-default login
 gcloud config set project <your-billing-project>
 ```
 
-`<your-billing-project>` is a project you own (with the BigQuery API enabled)
-that will be charged for the scanned bytes. You still query *other people's*
-public data (e.g. `cwts-leiden.openalex_2025aug`); the billing project is
-separate from the data project.
+`<your-billing-project>` is a GCP project you own (BigQuery API enabled)
+that will be charged for scanned bytes. You still query *other people's*
+public datasets (e.g. `cwts-leiden.openalex_*`, `ds-open-datasets.orcid.*`);
+the billing project is separate from the data project. Dimensions gives
+each account a **1 TB/month free tier** on their open datasets.
 
 ## Quick usage (from an agent chat)
 
-> "Using the bigquery skill, get me the number of OpenAlex works per pub_year
-> for authors affiliated with Nanjing University between 2018 and 2022."
+> "Using the bigquery skill, get me the full employment history for ORCID
+> 0000-0002-1825-0097 with ROR-disambiguated organizations."
 
 The agent will:
 
-1. Look up `openalex` in `datasets/INDEX.md`
-2. Read `datasets/openalex/README.md`, `relationships.md`, and relevant
-   `dictionary.csv` rows
-3. Draft SQL following `reference/sql-conventions.md`
-4. Dry-run via `scripts/run_query.py` to estimate scan bytes and cost
-5. Ask you before executing anything expensive
+1. Look up `orcid` in `datasets/INDEX.md`
+2. Read `datasets/orcid/README.md` (top-level structure, gotchas)
+3. Read `datasets/orcid/relationships.md` (UNNEST recipe)
+4. Draft SQL following `reference/sql-conventions.md`
+5. Dry-run via `scripts/run_query.py` to show scan cost
+6. Ask you before executing anything expensive
 
 ## Add a new dataset
 
@@ -82,22 +97,27 @@ python scripts/scaffold_dataset.py mydataset
 # add a row to datasets/INDEX.md
 ```
 
-That's it — the core `SKILL.md` doesn't need to change.
+The core `SKILL.md` doesn't need to change.
 
 ## Repository layout
 
 ```
-cursor-skill-bigquery/
-├── SKILL.md                     # main skill instructions
+bigquery-skill/
+├── SKILL.md                     # main skill instructions (platform-agnostic)
 ├── reference/                   # generic BQ how-to (auth, SQL, cost safety)
 ├── datasets/
 │   ├── INDEX.md                 # registry
 │   └── <name>/                  # one folder per dataset adapter
+│       ├── README.md
+│       ├── dictionary.csv
+│       ├── relationships.md
+│       ├── examples.sql
+│       └── assets/              # optional (schema.json, ER svg, ...)
 ├── scripts/
 │   ├── run_query.py             # dry-run → confirm → execute, with byte cap
 │   ├── list_datasets.py
 │   └── scaffold_dataset.py
-├── install.ps1 / install.sh     # symlink/copy to ~/.cursor/skills/bigquery
+├── install.ps1 / install.sh     # multi-platform installer
 ├── requirements.txt
 └── .env.example
 ```
