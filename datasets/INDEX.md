@@ -6,7 +6,7 @@ Users: add a row when contributing a new dataset adapter.
 | name | folder | bq_project.dataset (default) | version notes | primary entities | status |
 |---|---|---|---|---|---|
 | openalex | `datasets/openalex/` | `cwts-leiden.openalex_2025aug` | Tables whose name contains `institution` MUST use `cwts-leiden.openalex_2024aug` | work, author, institution, concept, citation | ready |
-| orcid    | `datasets/orcid/`    | `ds-open-datasets.orcid.summaries_2024` | Also available: `summaries_2023`, `summaries_2025`. Single wide table, nested STRUCT/REPEATED; UNNEST-heavy | orcid_identifier, history, person, activities (employments, educations, works, ...) | ready |
+| orcid    | `datasets/orcid/`    | `ds-open-datasets.orcid.summaries_2025` | Default is the latest snapshot. Also available: `summaries_2024` (Dimensions-documented release, 103 GB), `summaries_2023` (84 GB). Schema identical across all three. Single wide table, nested STRUCT/REPEATED; UNNEST-heavy | orcid_identifier, history, person, activities (employments, educations, works, ...) | ready |
 
 ## Adding a new dataset
 

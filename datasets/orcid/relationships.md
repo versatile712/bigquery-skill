@@ -1,13 +1,13 @@
 # ORCID (Dimensions BQ) — Relationships & UNNEST Cheat Sheet
 
-There is only **one physical table** (`summaries_2024`), so "relationships"
+There is only **one physical table per snapshot** (default: `summaries_2025`), so "relationships"
 here means: (a) how to UNNEST the nested arrays, and (b) how to bridge to
 other datasets (OpenAlex, Crossref, ROR).
 
 ## UNNEST recipe (memorize)
 
 ```sql
-FROM `ds-open-datasets.orcid.summaries_2024`,
+FROM `ds-open-datasets.orcid.summaries_2025`,
      UNNEST(activities.<KIND>.groups) AS grp,
      UNNEST(grp.records)              AS r
 ```
@@ -38,15 +38,16 @@ Every `.organization.disambiguated_organization` has:
 - `.identifier` — the id value in its native registry
 - `.source` — one of `ROR | RINGGOLD | FUNDREF | GRID | NULL`
 
-**Coverage** (verified for 2024 employments started that year):
+**Coverage** (verified for employments recorded on ORCID, calibrated on 2024):
 `ROR ~228,862 · NULL ~30,104 · RINGGOLD ~2,865 · FUNDREF ~1,904 · GRID ~576`
+(2025 snapshot shows the same distribution shape at higher volume; not re-tallied.)
 
 **Preference rule**: use ROR when available; fall back to RINGGOLD (Web of
 Science ecosystem) or GRID (mostly deprecated) with a note.
 
 ## Bridge to OpenAlex
 
-`ds-open-datasets.orcid.summaries_2024.orcid_identifier.path`   ↔   `cwts-leiden.openalex_2025aug.author.orcid`
+`ds-open-datasets.orcid.summaries_2025.orcid_identifier.path`   ↔   `cwts-leiden.openalex_2025aug.author.orcid`
 
 **Format caveat**: ORCID stores the 16-char path (`0000-0002-1825-0097`).
 OpenAlex may store either the path or the full URL
@@ -62,7 +63,7 @@ WITH orcid_flat AS (
     r.organization.disambiguated_organization.identifier AS ror_id,
     SAFE_CAST(r.start_date.year AS INT64) AS start_year,
     SAFE_CAST(r.end_date.year AS INT64)   AS end_year
-  FROM `ds-open-datasets.orcid.summaries_2024`,
+  FROM `ds-open-datasets.orcid.summaries_2025`,
        UNNEST(activities.employments.groups) AS g,
        UNNEST(g.records) AS r
 ),
@@ -93,5 +94,6 @@ UNNEST(wg.external_ids.identifiers) AS id
 WHERE id.type = 'doi'
 ```
 
-Cardinality on ORCID 2024: DOI 77.8 M · EID 40.1 M · WoS UID 13.1 M · PMID
-8.3 M · arXiv 2.1 M · PMC 2.5 M · handle 1.5 M · ISBN 1.05 M.
+Cardinality on ORCID 2024 (illustrative; 2025 higher): DOI 77.8 M · EID
+40.1 M · WoS UID 13.1 M · PMID 8.3 M · arXiv 2.1 M · PMC 2.5 M · handle
+1.5 M · ISBN 1.05 M.

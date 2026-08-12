@@ -1,7 +1,8 @@
 # ORCID Public Data (via Dimensions on BigQuery)
 
-Verified against live BigQuery on 2026-08-12 by
-`nsfcopenalex` billing project.
+Verified against live BigQuery on 2026-08-12 by `nsfcopenalex` billing
+project. Default table switched to `summaries_2025` after confirming
+schema parity with `summaries_2024`.
 
 ## Source
 
@@ -18,11 +19,16 @@ Sample queries: <https://bigquery-lab.dimensions.ai/tutorials/09-orcid/>
 
 ## Tables
 
-| Table | Type | Size | Notes |
-|---|---|---|---|
-| `ds-open-datasets.orcid.summaries_2024` | BASE TABLE | 103 GB | **Default** — Feb 2025 release |
-| `ds-open-datasets.orcid.summaries_2025` | CLONE | 122 GB | Latest snapshot (not yet in Dimensions docs) |
-| `ds-open-datasets.orcid.summaries_2023` | CLONE | 84 GB | Historical |
+| Table | Type | Size | Rows | Notes |
+|---|---|---|---|---|
+| `ds-open-datasets.orcid.summaries_2025` | CLONE | 122 GB | 25,048,058 | **Default** — latest snapshot |
+| `ds-open-datasets.orcid.summaries_2024` | BASE TABLE | 103 GB | 21,071,103 | Feb 2025 release (Dimensions docs still cite this as the "official" open dataset) |
+| `ds-open-datasets.orcid.summaries_2023` | CLONE | 84 GB | 17,731,671 | Historical |
+
+Schema of `summaries_2025` is **identical to `summaries_2024`** (verified
+2026-08-12: 868 field paths, zero adds/removes). Pick 2024 only if you
+need reproducibility against the officially documented release; otherwise
+prefer 2025 for coverage.
 
 License: **CC0** (ORCID Public Data File). Update cadence: yearly.
 
@@ -42,7 +48,7 @@ activities                # educations, employments, fundings, peer_reviews, wor
 Almost every "activity" list follows this shape:
 
 ```sql
-FROM `ds-open-datasets.orcid.summaries_2024`,
+FROM `ds-open-datasets.orcid.summaries_2025`,
      UNNEST(activities.<KIND>.groups) AS grp,
      UNNEST(grp.records)              AS record
 ```
@@ -75,7 +81,7 @@ See `examples.sql`.
    OpenAlex's `author.orcid` may store the full URL `https://orcid.org/...`; when bridging, strip prefix or use `ENDS_WITH`.
 3. **Organization disambiguation `source` values**: `ROR`, `RINGGOLD`, `FUNDREF`, `GRID`, or NULL.
    For 2024 employments: ROR covers ~228k, RINGGOLD ~3k, FUNDREF ~2k, GRID ~0.6k, NULL ~30k.
-4. **`SELECT *` on any `summaries_YYYY` table** ≈ **$0.60+ per query**. Never do it.
+4. **`SELECT *` on any `summaries_YYYY` table** ≈ **$0.75+ per query** (2025 is 122 GB). Never do it.
 5. **Empty vs null**: `activities.employments.groups` can be empty array `[]` for accounts with no employments — `UNNEST` yields zero rows, so use `LEFT JOIN UNNEST(...)` if you need to keep the ORCID row.
 
 ## Cost calibration (dry-run measurements)

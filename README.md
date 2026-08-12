@@ -17,7 +17,7 @@ Private repository — internal use by the author and authorized collaborators.
 | name | status | source |
 |---|---|---|
 | `openalex` | ready | CWTS Leiden mirror (`cwts-leiden.openalex_2025aug`; institution tables on `openalex_2024aug`) |
-| `orcid` | ready | Dimensions on BQ (`ds-open-datasets.orcid.summaries_2024` + 2023/2025 clones). Schema verified against live table |
+| `orcid` | ready | Dimensions on BQ. Default: `ds-open-datasets.orcid.summaries_2025` (25 M rows, 122 GB); also `summaries_2024` (Dimensions-documented, 21 M) and `summaries_2023`. Schema verified against live table (identical across snapshots) |
 
 See `datasets/INDEX.md` for the machine-readable registry.
 
@@ -79,6 +79,8 @@ each account a **1 TB/month free tier** on their open datasets.
 
 > "Using the bigquery skill, get me the full employment history for ORCID
 > 0000-0002-1825-0097 with ROR-disambiguated organizations."
+>
+> (defaults to `ds-open-datasets.orcid.summaries_2025`)
 
 The agent will:
 

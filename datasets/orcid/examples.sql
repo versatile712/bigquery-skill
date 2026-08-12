@@ -1,12 +1,12 @@
 -- ORCID on Dimensions BigQuery — canonical query patterns
--- Dataset: ds-open-datasets.orcid.summaries_2024 (default; also summaries_2023 / summaries_2025)
+-- Dataset: ds-open-datasets.orcid.summaries_2025 (default; also summaries_2023 / summaries_2024)
 -- Verified via INFORMATION_SCHEMA + Table.schema on 2026-08-12.
 
 -- ============================================================
 -- 1. Active ORCID count (near-free — reads history metadata)
 -- ============================================================
 SELECT COUNT(*) AS active_orcids
-FROM `ds-open-datasets.orcid.summaries_2024`
+FROM `ds-open-datasets.orcid.summaries_2025`
 WHERE history.deactivation_date IS NULL;
 
 -- ============================================================
@@ -15,7 +15,7 @@ WHERE history.deactivation_date IS NULL;
 SELECT
   EXTRACT(YEAR FROM TIMESTAMP(history.submission_date)) AS year,
   COUNT(*) AS n
-FROM `ds-open-datasets.orcid.summaries_2024`
+FROM `ds-open-datasets.orcid.summaries_2025`
 WHERE history.deactivation_date IS NULL
 GROUP BY year
 ORDER BY year;
@@ -38,7 +38,7 @@ emp AS (
     r.organization.disambiguated_organization.source     AS org_source,
     SAFE_CAST(r.start_date.year AS INT64) AS start_year,
     SAFE_CAST(r.end_date.year   AS INT64) AS end_year
-  FROM `ds-open-datasets.orcid.summaries_2024`,
+  FROM `ds-open-datasets.orcid.summaries_2025`,
        UNNEST(activities.employments.groups) AS g,
        UNNEST(g.records) AS r
   WHERE orcid_identifier.path IN (SELECT orcid_path FROM target)
@@ -56,7 +56,7 @@ SELECT
   r.role_title,
   r.organization.name AS org_name,
   r.organization.disambiguated_organization.identifier AS ror_id
-FROM `ds-open-datasets.orcid.summaries_2024`,
+FROM `ds-open-datasets.orcid.summaries_2025`,
      UNNEST(activities.employments.groups) AS g,
      UNNEST(g.records) AS r
 WHERE r.start_date.year = '2023'
@@ -75,7 +75,7 @@ WITH orcid_emp AS (
     r.organization.disambiguated_organization.identifier AS ror_id,
     SAFE_CAST(r.start_date.year AS INT64) AS start_year,
     SAFE_CAST(r.end_date.year   AS INT64) AS end_year
-  FROM `ds-open-datasets.orcid.summaries_2024`,
+  FROM `ds-open-datasets.orcid.summaries_2025`,
        UNNEST(activities.employments.groups) AS g,
        UNNEST(g.records) AS r
   WHERE r.organization.disambiguated_organization.source = 'ROR'
@@ -110,7 +110,7 @@ SELECT
   r.organization.address.country AS country,
   SAFE_CAST(r.start_date.year AS INT64) AS start_year,
   SAFE_CAST(r.end_date.year   AS INT64) AS end_year
-FROM `ds-open-datasets.orcid.summaries_2024`,
+FROM `ds-open-datasets.orcid.summaries_2025`,
      UNNEST(activities.educations.groups) AS g,
      UNNEST(g.records) AS r
 WHERE orcid_identifier.path IN ('0000-0002-1825-0097', '0000-0003-1613-5981');
@@ -124,7 +124,7 @@ SELECT
   r.type,
   r.publication_date.year AS pub_year,
   ARRAY_AGG(STRUCT(id.type, id.value)) AS identifiers
-FROM `ds-open-datasets.orcid.summaries_2024`,
+FROM `ds-open-datasets.orcid.summaries_2025`,
      UNNEST(activities.works.groups) AS g,
      UNNEST(g.records) AS r,
      UNNEST(g.external_ids.identifiers) AS id
@@ -139,7 +139,7 @@ SELECT
   r.reviewer_role,
   r.review_type,
   r.convening_organization.name AS convening_org
-FROM `ds-open-datasets.orcid.summaries_2024`,
+FROM `ds-open-datasets.orcid.summaries_2025`,
      UNNEST(activities.peer_reviews.groups) AS g,
      UNNEST(g.groups) AS gg,
      UNNEST(gg.records) AS r
