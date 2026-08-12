@@ -1,0 +1,20 @@
+table,column,type,description,notes
+person,orcid,STRING,"16-char ORCID iD (xxxx-xxxx-xxxx-xxxx)","primary key"
+person,given_names,STRING,"given name(s)",
+person,family_name,STRING,"family name",
+person,created_date,TIMESTAMP,"account creation",
+employment,orcid,STRING,"FK to person.orcid",
+employment,put_code,INT64,"ORCID internal record id",
+employment,role_title,STRING,"job title as declared",
+employment,start_year,INT64,"start year (may be null)",
+employment,end_year,INT64,"end year (null = current)",
+employment,organization_name,STRING,"raw org name",
+employment,ror_id,STRING,"ROR id when disambiguated","preferred org identifier"
+employment,grid_id,STRING,"GRID id fallback",
+education,orcid,STRING,"FK to person.orcid",
+education,put_code,INT64,"ORCID internal record id",
+education,role_title,STRING,"degree or program",
+education,start_year,INT64,"",
+education,end_year,INT64,"",
+education,organization_name,STRING,"",
+education,ror_id,STRING,"",
