@@ -44,5 +44,5 @@ bq query --use_legacy_sql=false --maximum_bytes_billed=53687091200 "SELECT ..." 
 | Symptom | Cause | Fix |
 |---|---|---|
 | `403 Access Denied: BigQuery BigQuery: Permission denied` on dry-run | Billing project not set or lacks `bigquery.jobs.create` | `gcloud config set project <p>`; ensure user has `roles/bigquery.jobUser` |
-| `Dataset not found` | Wrong dataset version (e.g. institution on 2025aug) | Check the dataset's `README.md` version rule |
+| `Dataset not found` | Wrong dataset version (e.g. `institution_type` queried on 2025aug when the adapter pins 2024aug) | Check the dataset's `README.md` version rule |
 | `Query exceeded limit for bytes billed` | Guardrail triggered | Raise `--max-gb` after understanding cost, or narrow the query |

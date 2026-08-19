@@ -93,4 +93,4 @@ See `datasets/INDEX.md` for the machine-readable registry. Currently:
 - Executing without a dry-run when scanning > 1 GB
 - `SELECT *` on any wide table (OpenAlex `work`, ORCID `summaries_YYYY`)
 - Hardcoding dataset versions when the adapter's `README.md` specifies
-  per-table rules (e.g. OpenAlex `institution` → 2024aug)
+  per-table rules (e.g. OpenAlex `institution_type` → 2024aug)

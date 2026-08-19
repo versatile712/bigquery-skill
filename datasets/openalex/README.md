@@ -4,17 +4,17 @@
 
 | BQ project | Dataset | Use for |
 |---|---|---|
-| `cwts-leiden` | `openalex_2025aug` | **Default** — all tables *except* those below |
-| `cwts-leiden` | `openalex_2024aug` | **Any table whose name contains `institution`** (i.e. `institution`, `work_affiliation_institution`, `author_institution`, `author_last_known_institution`, `institution_type`, plus lookup tables `country`, `city` when joined via institution) |
+| `cwts-leiden` | `openalex_2025aug` | **Default** — all tables except `institution_type` |
+| `cwts-leiden` | `openalex_2024aug` | **`institution_type` only** |
 
-**Version rule** (memorize): *"institution → 2024aug, everything else → 2025aug."*
-This is because CWTS did not re-publish the institution family in the 2025aug refresh.
+**Version rule** (memorize): *"only `institution_type` → 2024aug; everything else → 2025aug."*
+`institution`, `work_affiliation_institution`, `author_institution`, `author_last_known_institution`, `country`, and `city` all live in `openalex_2025aug` and should be queried there.
 
 ## Primary entities
 
 - `work` — publications; partitioned/clustered by `pub_year`
 - `author` — disambiguated authors
-- `institution` — ROR-aligned organizations (**2024aug only**)
+- `institution` — ROR-aligned organizations
 - `concept` — OpenAlex concept hierarchy (deprecated upstream in favor of Topics, but still available on Leiden)
 - `citation` — citing → cited pairs
 
@@ -22,10 +22,10 @@ This is because CWTS did not re-publish the institution family in the 2025aug re
 
 - `work_author (work_id, author_seq, author_id, author_position_id)`
 - `work_affiliation (work_id, affiliation_seq, ...)`
-- `work_affiliation_institution (work_id, affiliation_seq, institution_id)` **[2024aug]**
+- `work_affiliation_institution (work_id, affiliation_seq, institution_id)`
 - `work_concept (work_id, concept_seq, concept_id, score)`
-- `author_institution (author_id, institution_seq, institution_id)` **[2024aug]**
-- `author_last_known_institution (author_id, last_known_institution_id)` **[2024aug]**
+- `author_institution (author_id, institution_seq, institution_id)`
+- `author_last_known_institution (author_id, last_known_institution_id)`
 
 ## Field dictionary
 
@@ -41,8 +41,9 @@ See `examples.sql`.
 
 ## Gotchas
 
-- **Mixed-dataset JOINs are the norm.** A "publications by institution" query
-  will hit both `openalex_2025aug.work` and `openalex_2024aug.work_affiliation_institution`.
+- **Mixed-dataset JOINs are rare.** Only needed when attaching `institution_type`
+  (2024aug) to an institution row from 2025aug. A "publications by institution"
+  query can stay entirely on `openalex_2025aug`.
 - **`work.pub_year`** is the partition-pruning column. Always filter on it
   first when possible.
 - **`concept`** is deprecated upstream but Leiden has not removed it. New

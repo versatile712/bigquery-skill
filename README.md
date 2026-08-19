@@ -16,7 +16,7 @@ Private repository — internal use by the author and authorized collaborators.
 
 | name | status | source |
 |---|---|---|
-| `openalex` | ready | CWTS Leiden mirror (`cwts-leiden.openalex_2025aug`; institution tables on `openalex_2024aug`) |
+| `openalex` | ready | CWTS Leiden mirror (`cwts-leiden.openalex_2025aug`; only `institution_type` on `openalex_2024aug`) |
 | `orcid` | ready | Dimensions on BQ. Default: `ds-open-datasets.orcid.summaries_2025` (25 M rows, 122 GB); also `summaries_2024` (Dimensions-documented, 21 M) and `summaries_2023`. Schema verified against live table (identical across snapshots) |
 
 See `datasets/INDEX.md` for the machine-readable registry.

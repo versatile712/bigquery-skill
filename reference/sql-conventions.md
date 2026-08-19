@@ -15,7 +15,7 @@
 ## Query template
 
 ```sql
--- dataset: openalex_2025aug (institution tables: 2024aug)
+-- dataset: openalex_2025aug (institution_type only: 2024aug)
 -- purpose: <one line>
 -- dry-run bytes: <fill after dry-run>
 
